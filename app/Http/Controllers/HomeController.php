@@ -11,8 +11,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('home');
+        $accommodations = Accommodation::with('images')->latest()->take(3)->get();
+        return view('home', compact('accommodations'));
     }
+
 
     public function gallery()
     {

@@ -42,6 +42,14 @@
                 @enderror
             </div>
 
+            <div>
+                <label class="block text-sm font-medium mb-1">Harga per malam.</label>
+                <input type="number" name="price" required placeholder="Contoh: 250000"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('capacity') border-red-500 @enderror"
+                required>
+            </div>
+
+
             <div class="mb-6">
                 <label for="facilities" class="block text-gray-700 font-semibold mb-2">
                     Fasilitas <span class="text-red-500">*</span>

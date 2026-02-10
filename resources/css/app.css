@@ -9,3 +9,28 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+@font-face {
+    font-family: 'Aeonik';
+    src: url('/fonts/Aeonik-Regular.woff2') format('woff2'),
+         url('/fonts/Aeonik-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Aeonik';
+    src: url('/fonts/Aeonik-Medium.woff2') format('woff2'),
+         url('/fonts/Aeonik-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Aeonik';
+    src: url('/fonts/Aeonik-Bold.woff2') format('woff2'),
+         url('/fonts/Aeonik-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+  }
+  

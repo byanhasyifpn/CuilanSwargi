@@ -20,20 +20,29 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// contact
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
 // Admin Routes (Protected)
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
-    // Gallery Management
-    Route::resource('gallery', AdminGalleryController::class);
-    
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
+
+    // 🔥 ACCOMMODATION IMAGE DELETE HARUS DI ATAS
+    Route::delete('accommodation-image/{id}',
+        [AdminAccommodationController::class, 'deleteImage'])
+        ->name('accommodation.image.delete');
+
     // Accommodation Management
     Route::resource('accommodation', AdminAccommodationController::class);
-    Route::delete('accommodation-image/{id}', [AdminAccommodationController::class, 'deleteImage'])
-        ->name('accommodation.image.delete');
-    
+
+    // Gallery Management
+    Route::resource('gallery', AdminGalleryController::class);
+
     // Article Management
     Route::resource('article', AdminArticleController::class);
-    Route::post('article/{article}/toggle-publish', [AdminArticleController::class, 'togglePublish'])
+    Route::post('article/{article}/toggle-publish',
+        [AdminArticleController::class, 'togglePublish'])
         ->name('article.toggle-publish');
 });

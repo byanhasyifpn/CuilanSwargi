@@ -13,8 +13,9 @@ class Accommodation extends Model
     protected $fillable = [
         'name',
         'capacity',
+        'price',
         'facilities',
-    ];
+    ];    
 
     public function images()
     {

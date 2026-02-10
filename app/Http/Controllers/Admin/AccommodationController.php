@@ -22,33 +22,37 @@ class AccommodationController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'capacity' => 'required|integer|min:1',
-            'facilities' => 'required|string',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'capacity' => 'required|integer|min:1',
+        'price' => 'required|integer|min:0',
+        'facilities' => 'required|string',
+        'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        $accommodation = Accommodation::create([
-            'name' => $request->name,
-            'capacity' => $request->capacity,
-            'facilities' => $request->facilities,
-        ]);
+    $accommodation = Accommodation::create([
+        'name' => $request->name,
+        'capacity' => $request->capacity,
+        'price' => $request->price,
+        'facilities' => $request->facilities,
+    ]);
 
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $imagePath = $image->store('accommodations', 'public');
-                AccommodationImage::create([
-                    'accommodation_id' => $accommodation->id,
-                    'image' => $imagePath,
-                ]);
-            }
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images') as $image) {
+            $imagePath = $image->store('accommodations', 'public');
+
+            AccommodationImage::create([
+                'accommodation_id' => $accommodation->id,
+                'image' => $imagePath,
+            ]);
         }
-
-        return redirect()->route('admin.accommodation.index')
-            ->with('success', 'Penginapan berhasil ditambahkan!');
     }
+
+    return redirect()->route('admin.accommodation.index')
+        ->with('success', 'Penginapan berhasil ditambahkan!');
+}
+
 
     public function edit(Accommodation $accommodation)
     {
@@ -57,33 +61,37 @@ class AccommodationController extends Controller
     }
 
     public function update(Request $request, Accommodation $accommodation)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'capacity' => 'required|integer|min:1',
-            'facilities' => 'required|string',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'capacity' => 'required|integer|min:1',
+        'price' => 'required|integer|min:0',
+        'facilities' => 'required|string',
+        'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        $accommodation->update([
-            'name' => $request->name,
-            'capacity' => $request->capacity,
-            'facilities' => $request->facilities,
-        ]);
+    $accommodation->update([
+        'name' => $request->name,
+        'capacity' => $request->capacity,
+        'price' => $request->price,
+        'facilities' => $request->facilities,
+    ]);
 
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $imagePath = $image->store('accommodations', 'public');
-                AccommodationImage::create([
-                    'accommodation_id' => $accommodation->id,
-                    'image' => $imagePath,
-                ]);
-            }
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images') as $image) {
+            $imagePath = $image->store('accommodations', 'public');
+
+            AccommodationImage::create([
+                'accommodation_id' => $accommodation->id,
+                'image' => $imagePath,
+            ]);
         }
-
-        return redirect()->route('admin.accommodation.index')
-            ->with('success', 'Penginapan berhasil diperbarui!');
     }
+
+    return redirect()->route('admin.accommodation.index')
+        ->with('success', 'Penginapan berhasil diperbarui!');
+}
+
 
     public function destroy(Accommodation $accommodation)
     {
@@ -100,9 +108,15 @@ class AccommodationController extends Controller
     public function deleteImage($id)
     {
         $image = AccommodationImage::findOrFail($id);
-        Storage::disk('public')->delete($image->image);
+
+        if (Storage::disk('public')->exists($image->image)) {
+            Storage::disk('public')->delete($image->image);
+        }
+
         $image->delete();
 
         return back()->with('success', 'Gambar berhasil dihapus!');
     }
+
+
 }
