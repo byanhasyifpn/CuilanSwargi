@@ -53,13 +53,6 @@
                  class="w-full h-auto object-cover">
         </div>
 
-        <!-- Excerpt -->
-        @if($article->excerpt)
-        <div class="mb-8 p-6 bg-secondary/20 rounded-lg border-l-4 border-primary">
-            <p class="text-lg text-gray-700 italic">{{ $article->excerpt }}</p>
-        </div>
-        @endif
-
         <!-- Content -->
         <div class="prose prose-lg max-w-none">
             <div class="text-gray-700 leading-relaxed whitespace-pre-line">

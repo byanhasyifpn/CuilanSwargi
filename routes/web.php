@@ -14,6 +14,9 @@ Route::get('/galeri', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/penginapan', [HomeController::class, 'accommodation'])->name('accommodation');
 Route::get('/artikel', [HomeController::class, 'articles'])->name('articles');
 Route::get('/artikel/{slug}', [HomeController::class, 'articleDetail'])->name('article.detail');
+Route::get('/penginapan/{id}', [HomeController::class, 'accommodationDetail'])
+    ->name('accommodation.detail');
+
 
 // Auth Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

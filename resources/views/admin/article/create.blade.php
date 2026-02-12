@@ -47,21 +47,6 @@
             </div>
 
             <div class="mb-6">
-                <label for="excerpt" class="block text-gray-700 font-semibold mb-2">
-                    Ringkasan/Excerpt (Opsional)
-                </label>
-                <textarea id="excerpt" 
-                          name="excerpt" 
-                          rows="3"
-                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('excerpt') border-red-500 @enderror"
-                          placeholder="Ringkasan singkat artikel (max 500 karakter). Jika kosong, akan diambil dari awal konten.">{{ old('excerpt') }}</textarea>
-                @error('excerpt')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-                <p class="text-gray-500 text-sm mt-1">Ringkasan ini akan muncul di daftar artikel</p>
-            </div>
-
-            <div class="mb-6">
                 <label for="content" class="block text-gray-700 font-semibold mb-2">
                     Isi Artikel <span class="text-red-500">*</span>
                 </label>

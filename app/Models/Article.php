@@ -14,7 +14,6 @@ class Article extends Model
         'title',
         'slug',
         'image',
-        'excerpt',
         'content',
         'is_published',
         'published_at',
@@ -52,12 +51,4 @@ class Article extends Model
         return $query->where('is_published', true);
     }
 
-    // Get excerpt or generate from content
-    public function getExcerptAttribute($value)
-    {
-        if ($value) {
-            return $value;
-        }
-        return Str::limit(strip_tags($this->content), 150);
-    }
 }

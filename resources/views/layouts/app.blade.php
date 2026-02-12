@@ -22,7 +22,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap');
         
         :root {
-            --primary-green: #2d5a4a;
+            --primary-green: #2E514B;
             --cream: #f5f3ee;
             --accent-yellow: #f5d547;
             --soft-white: #ffffff;
@@ -32,7 +32,7 @@
             font-family: 'Newsreader', serif;
         }
         
-        /* Navbar Styles */
+        /* Navbar */
         .navbar {
             background-color: #2E514B;
             padding: 1rem 2rem;
@@ -143,89 +143,104 @@
         .mobile-menu {
             display: none;
         }
+
         
-        /* Footer Styles */
+        /* Footer Styles - Dark Green Background */
         .footer {
-            background: var(--primary-green);
+            background: #2E514B;
             color: white;
-            padding: 4rem 2rem 2rem;
+            padding: 4rem 3rem 2.5rem;
         }
-        
+
         .footer-container {
             max-width: 1400px;
             margin: 0 auto;
         }
-        
-        .footer-brand {
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 6rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-left {
+            max-width: 480px;
+        }
+
+        .footer-logo {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 2rem;
+            border-radius: 50%;
+        }
+
+        .footer-title {
             font-family: 'Crimson Text', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            font-style: italic;
-            margin-bottom: 1rem;
-            line-height: 1;
+            font-size: 2.5rem;
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 1.2rem;
+            color: white;
         }
-        
-        .footer-tagline {
-            font-size: 1.1rem;
-            font-style: italic;
-            margin-bottom: 0.5rem;
-            opacity: 0.9;
+
+        .footer-desc {
+            font-size: 1rem;
+            opacity: 0.85;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
         }
-        
-        .footer-description {
-            font-size: 0.95rem;
-            opacity: 0.8;
-            max-width: 600px;
-            margin-bottom: 3rem;
-            line-height: 1.7;
+
+        .footer-links {
+            display: flex;
+            gap: 5rem;
         }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-        
+
         .footer-column h4 {
-            font-family: 'Crimson Text', serif;
             font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            font-family: 'Crimson Text', serif;
+            color: white;
         }
-        
+
         .footer-column ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-        
+
         .footer-column ul li {
-            margin-bottom: 0.7rem;
+            margin-bottom: 1rem;
         }
-        
+
         .footer-column ul li a {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            display: inline-block;
+            font-size: 1rem;
+            transition: color 0.3s ease;
         }
-        
+
         .footer-column ul li a:hover {
             color: white;
-            padding-left: 5px;
         }
-        
-        .footer-bottom {
+
+        .footer-bottom-custom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding-top: 2rem;
-            text-align: center;
-            font-size: 0.85rem;
-            opacity: 0.7;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
         }
         
         @media (max-width: 968px) {
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+
             .navbar-menu {
                 display: none;
             }
@@ -240,9 +255,9 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--soft-white);
+                background: white;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                padding: 1rem 2rem;
+                padding: 1.5rem 2rem;
             }
             
             .mobile-menu.active {
@@ -256,7 +271,7 @@
             }
             
             .mobile-menu ul li {
-                padding: 0.8rem 0;
+                padding: 1rem 0;
                 border-bottom: 1px solid #e0e0e0;
             }
             
@@ -265,31 +280,44 @@
             }
             
             .mobile-menu ul li a {
-                color: var(--primary-green);
+                color: #2E514B;
                 text-decoration: none;
-                font-size: 1rem;
+                font-size: 1.1rem;
                 display: block;
+                font-family: 'Crimson Text', serif;
             }
             
             .mobile-menu .navbar-cta {
                 display: block;
                 text-align: center;
-                margin-top: 1rem;
+                margin-top: 1.5rem;
             }
             
-            .footer-brand {
-                font-size: 2.5rem;
+            .footer {
+                padding: 3rem 1.5rem 2rem;
             }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
+
+            .footer-top {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 2.5rem;
+            }
+
+            .footer-bottom-custom {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
             }
         }
         
         @media (max-width: 640px) {
-            .footer-content {
-                grid-template-columns: 1fr;
+            .footer-links {
+                flex-direction: column;
+                gap: 2rem;
             }
         }
     </style>
@@ -304,7 +332,7 @@
             
             <ul class="navbar-menu">
                 <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
-                <li><a href="{{ route('gallery') }}" class="{{ request()->routeIs('gallery') ? 'active' : '' }}">Gallery</a></li>
+                <li><a href="{{ route('gallery') }}" class="{{ request()->routeIs('gallery') ? 'active' : '' }}">Galery</a></li>
                 <li><a href="{{ route('accommodation') }}" class="{{ request()->routeIs('accommodation') ? 'active' : '' }}">Lodging</a></li>
                 <li><a href="{{ route('articles') }}" class="{{ request()->routeIs('articles') ? 'active' : '' }}">Article</a></li>
             </ul>
@@ -313,7 +341,7 @@
             
             <!-- Mobile Menu Button -->
             <button class="mobile-menu-button" id="mobile-menu-button">
-                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
@@ -323,7 +351,7 @@
         <div class="mobile-menu" id="mobile-menu">
             <ul>
                 <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
-                <li><a href="{{ route('gallery') }}" class="{{ request()->routeIs('gallery') ? 'active' : '' }}">Gallery</a></li>
+                <li><a href="{{ route('gallery') }}" class="{{ request()->routeIs('gallery') ? 'active' : '' }}">Galery</a></li>
                 <li><a href="{{ route('accommodation') }}" class="{{ request()->routeIs('accommodation') ? 'active' : '' }}">Lodging</a></li>
                 <li><a href="{{ route('articles') }}" class="{{ request()->routeIs('articles') ? 'active' : '' }}">Article</a></li>
             </ul>
@@ -337,61 +365,68 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <div>
-                <h2 class="footer-brand">Cuilan Swargi</h2>
-                <p class="footer-tagline">Nature That Heals, Moment That Stay</p>
-                <p class="footer-description">
-                    Escape the noise and rediscover the serenity of nature at Cuilan Swargi
-                </p>
-            </div>
-            
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('gallery') }}">Gallery</a></li>
-                        <li><a href="{{ route('accommodation') }}">Lodging</a></li>
-                        <li><a href="{{ route('articles') }}">Article</a></li>
-                    </ul>
-                </div>
+
+            <!-- Top Section -->
+            <div class="footer-top">
                 
-                <div class="footer-column">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="https://maps.google.com/?q=Sumberbening+Garut+8A+Baturraden" target="_blank">Sumberbening Garut 8A</a></li>
-                        <li><a href="https://maps.google.com/?q=Baturraden+Banyumas" target="_blank">Baturraden, Banyumas</a></li>
-                        <li><a href="mailto:info@cuilanswargi.com">info@cuilanswargi.com</a></li>
-                        <li><a href="tel:+6281234567890">+62 812 3456 7890</a></li>
-                    </ul>
+                <!-- Left Side -->
+                <div class="footer-left">
+                    <img src="{{ asset('images/logocuilanswargi.png') }}" 
+                         alt="Cuilan Swargi Logo"
+                         class="footer-logo">
+
+                    <h2 class="footer-title">
+                        Nature That Heals, Moment That Stay
+                    </h2>
+
+                    <p class="footer-desc">
+                        Escape the noise and enjoy the serenity of nature at Cuilan Swargi
+                    </p>
                 </div>
-                
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Safety Guide</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Follow Us</h4>
-                    <ul>
-                        <li><a href="https://instagram.com/cuilanswargi" target="_blank">Instagram</a></li>
-                        <li><a href="https://facebook.com/cuilanswargi" target="_blank">Facebook</a></li>
-                        <li><a href="https://twitter.com/cuilanswargi" target="_blank">Twitter</a></li>
-                        <li><a href="https://youtube.com/@cuilanswargi" target="_blank">YouTube</a></li>
-                    </ul>
+
+                <!-- Right Side -->
+                <div class="footer-links">
+
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('gallery') }}">Galery</a></li>
+                            <li><a href="{{ route('accommodation') }}">Lodging</a></li>
+                            <li><a href="{{ route('articles') }}">Article</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Follow us</h4>
+                        <ul>
+                            <li><a href="https://www.instagram.com/cuilanswargi">Instagram</a></li>
+                            <li><a href="https://www.youtube.com/@CuilanSwargi">Youtube</a></li>
+                            <li><a href="https://www.tiktok.com/@cuilanswargi?is_from_webapp=1&sender_device=pc">Tiktok</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-column">
+                        <h4>Contact us</h4>
+                        <ul>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">Email</a></li>
+                            <li><a href="#">Whatsapp</a></li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>©{{ date('Y') }} Cuilan Swargi. All rights reserved</p>
+
+            <!-- Bottom Section -->
+            <div class="footer-bottom-custom">
+                <p>©2026 Cuilan Swargi.</p>
+                <p>All rights reserved</p>
             </div>
+
         </div>
     </footer>
+
     
     <script>
         // Mobile menu toggle

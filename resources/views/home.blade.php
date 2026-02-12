@@ -326,6 +326,155 @@
     </div>
 </section>
 
+<section class="relative w-full min-h-screen flex items-center px-16 py-24 text-white">
+
+    <!-- Background -->
+    <div class="absolute inset-0">
+        <img src="{{ asset('images/bg-accommodation.png') }}"
+             class="w-full h-full object-cover" 
+             alt="Background">
+        <div class="absolute inset-0 bg-black/50"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-7xl mx-auto">
+
+        <!-- Title -->
+        <div class="mb-16">
+            <h2 class="text-5xl font-light tracking-wide">
+                How To Get To
+            </h2>
+            <h3 class="text-6xl italic font-semibold mt-2 font-serif">
+                Purwokerto
+            </h3>
+        </div>
+
+        <!-- Cards -->
+        <div class="grid md:grid-cols-2 gap-12">
+
+            <!-- TRAIN -->
+            <div class="backdrop-blur-xl bg-white/10 border border-white/30 
+                        rounded-3xl p-10 shadow-2xl">
+
+                <div class="flex items-center gap-6 mb-8">
+
+                    <!-- Train Icon -->
+                    <div class="w-20 h-20 rounded-2xl 
+                                bg-white/10 border border-white/30 
+                                flex items-center justify-center">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" 
+                             fill="none" 
+                             viewBox="0 0 24 24" 
+                             stroke-width="1.5" 
+                             stroke="currentColor" 
+                             class="w-10 h-10 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" 
+                                d="M4.5 16.5V7.5A3 3 0 017.5 4.5h9a3 3 0 013 3v9m-15 0h15m-15 0l-1.5 3m16.5-3l1.5 3M9 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm6 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                        </svg>
+
+                    </div>
+
+                    <h4 class="text-3xl font-light">Train</h4>
+                </div>
+
+                <div class="space-y-4 text-lg text-white/90 leading-relaxed">
+                    <p>YOGYAKARTA - PURWOKERTO (2 HOURS)</p>
+                    <p>YOGYAKARTA (LEMPUYANGAN) - PURWOKERTO (2.5 HOURS)</p>
+                    <p>SEMARANG (TAWANG) - PURWOKERTO (4 HOURS)</p>
+                    <p>SEMARANG (PONCOL) - PURWOKERTO (4 HOURS)</p>
+                    <p>JAKARTA (GAMBIR) - PURWOKERTO (5 HOURS)</p>
+                    <p>JAKARTA (PASAR SENEN) - PURWOKERTO (5.5 HOURS)</p>
+                    <p>SURABAYA (PASAR TURI) - PURWOKERTO (8 HOURS)</p>
+                    <p>SURABAYA (GUBENG) - PURWOKERTO (8 HOURS)</p>
+                    <p>BANDUNG (KIARA CONDONG) - PURWOKERTO (7 HOURS)</p>
+                </div>
+            </div>
+
+            <!-- BUS -->
+            <div class="backdrop-blur-xl bg-white/10 border border-white/30 
+                        rounded-3xl p-10 shadow-2xl">
+
+                <div class="flex items-center gap-6 mb-8">
+
+                    <!-- Bus Icon -->
+                    <div class="w-20 h-20 rounded-2xl 
+                                bg-white/10 border border-white/30 
+                                flex items-center justify-center">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" 
+                             fill="none" 
+                             viewBox="0 0 24 24" 
+                             stroke-width="1.5" 
+                             stroke="currentColor" 
+                             class="w-10 h-10 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" 
+                                d="M8.25 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm7.5 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM3 8.25A2.25 2.25 0 015.25 6h13.5A2.25 2.25 0 0121 8.25v5.25A2.25 2.25 0 0118.75 15H5.25A2.25 2.25 0 013 13.5V8.25z" />
+                        </svg>
+
+                    </div>
+
+                    <h4 class="text-3xl font-light">Bus</h4>
+                </div>
+
+                <div class="space-y-4 text-lg text-white/90 leading-relaxed">
+                    <p>YOGYAKARTA - PURWOKERTO (6 HOURS)</p>
+                    <p>SEMARANG - PURWOKERTO (7 HOURS)</p>
+                    <p>JAKARTA - PURWOKERTO (7 HOURS)</p>
+                    <p>SURABAYA - PURWOKERTO (11 HOURS)</p>
+                    <p>BANDUNG - PURWOKERTO (8 HOURS)</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+
+        <!-- Title -->
+        <div class="text-center mb-14">
+            <h2 class="text-4xl font-semibold text-primary mb-4">
+                Find Us On The Map
+            </h2>
+            <p class="text-gray-500">
+                Visit Cuilan Swargi and experience nature at its finest.
+            </p>
+        </div>
+
+        <!-- Map Card -->
+        <div class="rounded-3xl overflow-hidden shadow-2xl border border-gray-200">
+
+            <!-- Google Maps Embed -->
+            <iframe 
+                src="https://www.google.com/maps?q=Cuilan+Swargi+Baturraden&output=embed"
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy"
+                class="w-full h-[450px]">
+            </iframe>
+
+
+        </div>
+
+        <!-- Button -->
+        <div class="text-center mt-10">
+            <a href="https://maps.google.com/?q=Cuilan+Swargi+Baturraden"
+               target="_blank"
+               class="inline-block bg-primary text-white px-8 py-3 rounded-full
+                      hover:bg-[#24423d] transition duration-300 shadow-lg">
+                View on Google Maps
+            </a>
+        </div>
+
+    </div>
+</section>
+
+
+
 
 <!-- Ratings Section -->
 <section class="py-20 px-6 md:px-12 bg-[#ffff]">

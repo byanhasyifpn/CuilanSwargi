@@ -26,7 +26,6 @@ class ArticleController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'excerpt' => 'nullable|string|max:500',
             'content' => 'required|string',
             'is_published' => 'boolean',
         ]);
@@ -37,7 +36,6 @@ class ArticleController extends Controller
             'title' => $request->title,
             'slug' => Str::slug($request->title),
             'image' => $imagePath,
-            'excerpt' => $request->excerpt,
             'content' => $request->content,
             'is_published' => $request->has('is_published'),
             'published_at' => $request->has('is_published') ? now() : null,
@@ -62,7 +60,6 @@ class ArticleController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'excerpt' => 'nullable|string|max:500',
             'content' => 'required|string',
             'is_published' => 'boolean',
         ]);
@@ -70,7 +67,6 @@ class ArticleController extends Controller
         $data = [
             'title' => $request->title,
             'slug' => Str::slug($request->title),
-            'excerpt' => $request->excerpt,
             'content' => $request->content,
             'is_published' => $request->has('is_published'),
         ];

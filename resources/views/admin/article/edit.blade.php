@@ -53,18 +53,6 @@
                 </div>
             </div>
 
-            <div class="mb-6">
-                <label for="excerpt" class="block text-gray-700 font-semibold mb-2">
-                    Ringkasan/Excerpt (Opsional)
-                </label>
-                <textarea id="excerpt" 
-                          name="excerpt" 
-                          rows="3"
-                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('excerpt') border-red-500 @enderror">{{ old('excerpt', $article->excerpt) }}</textarea>
-                @error('excerpt')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-            </div>
 
             <div class="mb-6">
                 <label for="content" class="block text-gray-700 font-semibold mb-2">
