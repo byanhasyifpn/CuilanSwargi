@@ -42,30 +42,6 @@
                 @enderror
             </div>
 
-            <div>
-                <label class="block text-sm font-medium mb-1">Harga per malam.</label>
-                <input type="number" name="price" required placeholder="Contoh: 250000"
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('capacity') border-red-500 @enderror"
-                required>
-            </div>
-
-
-            <div class="mb-6">
-                <label for="facilities" class="block text-gray-700 font-semibold mb-2">
-                    Fasilitas <span class="text-red-500">*</span>
-                </label>
-                <textarea id="facilities" 
-                          name="facilities" 
-                          rows="5"
-                          placeholder="Pisahkan setiap fasilitas dengan koma.&#10;Contoh: AC, TV, Kamar Mandi Dalam, WiFi, Air Panas"
-                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('facilities') border-red-500 @enderror"
-                          required>{{ old('facilities') }}</textarea>
-                @error('facilities')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-                <p class="text-gray-500 text-sm mt-1">Pisahkan setiap fasilitas dengan koma (,)</p>
-            </div>
-
             <div class="mb-6">
                 <label for="images" class="block text-gray-700 font-semibold mb-2">
                     Gambar Kamar <span class="text-red-500">*</span>
@@ -86,11 +62,26 @@
                 <div id="preview" class="mt-4 grid grid-cols-3 gap-4"></div>
             </div>
 
+            <hr class="my-6">
+
+                        <h3 class="text-lg font-semibold mb-4">Tipe Service</h3>
+
+                        <div id="services-wrapper"></div>
+
+                        <button type="button"
+                                onclick="addService()"
+                    class="mb-6 bg-green-500 text-white px-4 py-2 rounded">
+                + Tambah Service
+            </button>
+
+
             <div class="flex space-x-4">
-                <button type="submit" 
+                <button type="submit"
+                        onclick="this.disabled=true; this.innerText='Menyimpan...'; this.form.submit();"
                         class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition">
                     Simpan
                 </button>
+
                 <a href="{{ route('admin.accommodation.index') }}" 
                    class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition">
                     Batal
@@ -120,5 +111,60 @@
             reader.readAsDataURL(file);
         }
     }
+
+    let serviceIndex = 0;
+
+function addService() {
+    const wrapper = document.getElementById('services-wrapper');
+
+    const html = `
+        <div class="border p-4 rounded-lg mb-4 bg-gray-50 service-item relative">
+
+            <button type="button"
+                    onclick="removeService(this)"
+                    class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded hover:bg-red-600">
+                Hapus
+            </button>
+
+            <div class="mb-3">
+                <label class="block font-semibold mb-1">Nama Service</label>
+                <input type="text"
+                       name="services[${serviceIndex}][name]"
+                       class="w-full border px-3 py-2 rounded"
+                       placeholder="Contoh: Room Only"
+                       required>
+            </div>
+
+            <div class="mb-3">
+                <label class="block font-semibold mb-1">Harga</label>
+                <input type="number"
+                       name="services[${serviceIndex}][price]"
+                       class="w-full border px-3 py-2 rounded"
+                       placeholder="Contoh: 975000"
+                       required>
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">Fasilitas</label>
+                <textarea name="services[${serviceIndex}][facilities]"
+                          rows="3"
+                          class="w-full border px-3 py-2 rounded"
+                          placeholder="Pisahkan dengan koma"
+                          required></textarea>
+            </div>
+        </div>
+    `;
+
+    wrapper.insertAdjacentHTML('beforeend', html);
+    serviceIndex++;
+}
+
+function removeService(button) {
+    if (confirm('Yakin ingin menghapus service ini?')) {
+        const serviceItem = button.closest('.service-item');
+        serviceItem.remove();
+    }
+}
+
 </script>
 @endsection

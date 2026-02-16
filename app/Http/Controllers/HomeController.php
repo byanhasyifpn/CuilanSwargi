@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $accommodations = Accommodation::with('images')->latest()->take(3)->get();
+        $accommodations = Accommodation::with(['images', 'services'])->latest()->take(6)->get();
         return view('home', compact('accommodations'));
     }
 
@@ -24,7 +24,7 @@ class HomeController extends Controller
 
     public function accommodation()
     {
-        $accommodations = Accommodation::with('images')->get();
+        $accommodations = Accommodation::with(['images', 'services'])->latest()->get();
         return view('accommodation', compact('accommodations'));
     }
 

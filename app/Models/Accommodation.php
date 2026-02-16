@@ -13,8 +13,6 @@ class Accommodation extends Model
     protected $fillable = [
         'name',
         'capacity',
-        'price',
-        'facilities',
     ];    
 
     public function images()
@@ -26,4 +24,10 @@ class Accommodation extends Model
     {
         return explode(',', $this->facilities);
     }
+
+    public function services()
+{
+    return $this->hasMany(AccommodationService::class);
+}
+
 }

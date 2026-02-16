@@ -41,37 +41,58 @@
                 @enderror
             </div>
 
-            {{-- PRICE WAJIB ADA karena controller validasi price --}}
-            <div class="mb-6">
-                <label for="price" class="block text-gray-700 font-semibold mb-2">
-                    Harga <span class="text-red-500">*</span>
-                </label>
-                <input type="number" 
-                       id="price" 
-                       name="price" 
-                       value="{{ old('price', $accommodation->price) }}"
-                       min="0"
-                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('price') border-red-500 @enderror"
+            <hr class="my-6">
+
+<h3 class="text-lg font-semibold mb-4">Tipe Service</h3>
+
+<div id="services-wrapper">
+
+    @foreach($accommodation->services as $index => $service)
+        <div class="border p-4 rounded-lg mb-4 bg-gray-50 service-item relative">
+
+            <button type="button"
+                    onclick="removeService(this)"
+                    class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded hover:bg-red-600">
+                Hapus
+            </button>
+
+            <div class="mb-3">
+                <label class="block font-semibold mb-1">Nama Service</label>
+                <input type="text"
+                       name="services[{{ $index }}][name]"
+                       value="{{ $service->name }}"
+                       class="w-full border px-3 py-2 rounded"
                        required>
-                @error('price')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
             </div>
 
-            <div class="mb-6">
-                <label for="facilities" class="block text-gray-700 font-semibold mb-2">
-                    Fasilitas <span class="text-red-500">*</span>
-                </label>
-                <textarea id="facilities" 
-                          name="facilities" 
-                          rows="5"
-                          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('facilities') border-red-500 @enderror"
-                          required>{{ old('facilities', $accommodation->facilities) }}</textarea>
-                @error('facilities')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                @enderror
-                <p class="text-gray-500 text-sm mt-1">Pisahkan setiap fasilitas dengan koma (,)</p>
+            <div class="mb-3">
+                <label class="block font-semibold mb-1">Harga</label>
+                <input type="number"
+                       name="services[{{ $index }}][price]"
+                       value="{{ $service->price }}"
+                       class="w-full border px-3 py-2 rounded"
+                       required>
             </div>
+
+            <div>
+                <label class="block font-semibold mb-1">Fasilitas</label>
+                <textarea name="services[{{ $index }}][facilities]"
+                          rows="3"
+                          class="w-full border px-3 py-2 rounded"
+                          required>{{ $service->facilities }}</textarea>
+            </div>
+        </div>
+    @endforeach
+
+</div>
+
+
+<button type="button"
+        onclick="addService()"
+        class="mb-6 bg-green-500 text-white px-4 py-2 rounded">
+    + Tambah Service
+</button>
+
 
             {{-- CURRENT IMAGES --}}
             <div class="mb-6">
@@ -164,6 +185,58 @@ function previewImages(event) {
         reader.readAsDataURL(file);
     }
 }
+
+let serviceIndex = {{ $accommodation->services->count() }};
+
+function addService() {
+    const wrapper = document.getElementById('services-wrapper');
+
+    const html = `
+        <div class="border p-4 rounded-lg mb-4 bg-gray-50 service-item relative">
+
+            <button type="button"
+                    onclick="removeService(this)"
+                    class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 text-xs rounded hover:bg-red-600">
+                Hapus
+            </button>
+
+            <div class="mb-3">
+                <label class="block font-semibold mb-1">Nama Service</label>
+                <input type="text"
+                       name="services[${serviceIndex}][name]"
+                       class="w-full border px-3 py-2 rounded"
+                       required>
+            </div>
+
+            <div class="mb-3">
+                <label class="block font-semibold mb-1">Harga</label>
+                <input type="number"
+                       name="services[${serviceIndex}][price]"
+                       class="w-full border px-3 py-2 rounded"
+                       required>
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">Fasilitas</label>
+                <textarea name="services[${serviceIndex}][facilities]"
+                          rows="3"
+                          class="w-full border px-3 py-2 rounded"
+                          required></textarea>
+            </div>
+        </div>
+    `;
+
+    wrapper.insertAdjacentHTML('beforeend', html);
+    serviceIndex++;
+}
+
+function removeService(button) {
+    if (confirm('Yakin ingin menghapus service ini?')) {
+        const serviceItem = button.closest('.service-item');
+        serviceItem.remove();
+    }
+}
+
 </script>
 
 @endsection

@@ -23,7 +23,7 @@
 
         @if($accommodations->count() > 0)
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
             @foreach($accommodations as $accommodation)
 
@@ -36,36 +36,50 @@
 
                 @if($firstImage)
                     <img src="{{ asset('storage/' . $firstImage->image) }}"
-                         class="w-full h-[520px] object-cover group-hover:scale-105 transition duration-700">
+                         class="w-full h-[420px] md:h-[380px] lg:h-[360px] object-cover group-hover:scale-105 transition duration-700">
                 @else
-                    <div class="w-full h-[520px] bg-gray-300"></div>
+                    <div class="w-full h-[420px] md:h-[380px] lg:h-[360px] bg-gray-300"></div>
                 @endif
 
                 <!-- Overlay -->
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
 
                 <!-- Content -->
-                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
 
                     <!-- Title -->
-                    <h2 class="text-3xl font-semibold mb-3">
+                    <h2 class="text-2xl font-semibold mb-3">
                         {{ $accommodation->name }}
                     </h2>
 
-                    <!-- Capacity & Price -->
+                    <!-- information -->
+                    @php
+                        $prices = $accommodation->services->pluck('price');
+                        $minPrice = $prices->min();
+                        $maxPrice = $prices->max();
+                    @endphp
+
                     <div class="flex items-center gap-4 text-sm mb-2 opacity-90">
                         <div class="flex items-center gap-1">
-                            👤 {{ $accommodation->capacity }}
-                        </div>
-                        <div>
-                            IDR {{ number_format($accommodation->price, 0, ',', '.') }}
+                            👤 {{ $accommodation->capacity }} Guests
                         </div>
                     </div>
 
-                    <!-- Services -->
-                    <div class="text-sm mb-6 opacity-80">
-                        ROOM ONLY | HALF SERVICES | FULL SERVICES
+                    {{-- Service Names --}}
+                    <div class="text-sm mb-2 opacity-90">
+                        {{ $accommodation->services->pluck('name')->implode(' | ') }}
                     </div>
+
+                    {{-- Price Range --}}
+                    @if($accommodation->services->count() > 0)
+                    <div class="text-sm mb-6 opacity-90">
+                        IDR {{ number_format($minPrice, 0, ',', '.') }}
+                        @if($minPrice != $maxPrice)
+                            - {{ number_format($maxPrice, 0, ',', '.') }}
+                        @endif
+                        / night
+                    </div>
+                    @endif
 
                     <!-- Button -->
                     <a href="{{ route('accommodation.detail', $accommodation->id) }}"
