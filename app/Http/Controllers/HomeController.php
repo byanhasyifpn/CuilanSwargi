@@ -25,8 +25,17 @@ class HomeController extends Controller
     public function accommodation()
     {
         $accommodations = Accommodation::with(['images', 'services'])->latest()->get();
-        return view('accommodation', compact('accommodations'));
+        return view('accommodation.accommodation', compact('accommodations'));
     }
+
+    public function accommodationDetail($id)
+{
+    $accommodation = Accommodation::with(['images', 'services'])
+        ->findOrFail($id);
+
+    return view('accommodation.show', compact('accommodation'));
+}
+
 
     public function articles()
     {

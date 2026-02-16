@@ -11,11 +11,12 @@ use App\Http\Controllers\Admin\ArticleController as AdminArticleController;
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/galeri', [HomeController::class, 'gallery'])->name('gallery');
-Route::get('/penginapan', [HomeController::class, 'accommodation'])->name('accommodation');
-Route::get('/artikel', [HomeController::class, 'articles'])->name('articles');
-Route::get('/artikel/{slug}', [HomeController::class, 'articleDetail'])->name('article.detail');
+Route::get('/penginapan', [HomeController::class, 'accommodation'])
+    ->name('accommodation');
 Route::get('/penginapan/{id}', [HomeController::class, 'accommodationDetail'])
     ->name('accommodation.detail');
+Route::get('/artikel', [HomeController::class, 'articles'])->name('articles');
+Route::get('/artikel/{slug}', [HomeController::class, 'articleDetail'])->name('article.detail');
 
 
 // Auth Routes

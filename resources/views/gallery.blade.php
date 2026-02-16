@@ -11,9 +11,7 @@
             Explored Cuilan Swargi
         </h1>
         <p class="text-gray-500 max-w-3xl mx-auto leading-relaxed">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit.
-            Sit amet consectetur adipiscing elit quisque faucibus ex.
-            Adipiscing elit quisque faucibus ex sapien vitae pellentesque.
+            Discover moments captured at Cuilan Swargi glimpses of nature, serenity, and the quiet beauty that surrounds every stay.
         </p>
     </div>
 </section>
@@ -68,6 +66,8 @@
 
     </div>
 </section>
+
+
 
 <!-- MODAL -->
 <div id="imageModal"

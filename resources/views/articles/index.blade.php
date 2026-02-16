@@ -23,13 +23,13 @@
         @if($articles->count() > 0)
 
         <!-- Articles Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
             @foreach($articles as $article)
             <article class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition duration-500">
 
                 <!-- Image -->
-                <div class="h-[260px] overflow-hidden">
+                <div class="h-[180px] overflow-hidden">
                     <img 
                         src="{{ asset('storage/' . $article->image) }}"
                         alt="{{ $article->title }}"
