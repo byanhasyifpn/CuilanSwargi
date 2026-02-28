@@ -13,91 +13,124 @@
     .font-crimson {
         font-family: 'Crimson Text', serif;
     }
+
+    /* Safari Rendering Fix */
+    .hero-fix {
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
 </style>
 
 <!-- Hero Section -->
-<section class="px-3 sm:px-4 py-4 sm:py-6 md:py-8 max-w-[1200px] mx-auto">
-  <div class="relative min-h-[500px] sm:min-h-[600px] md:min-h-[650px] lg:min-h-[700px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xl">
+<section>
 
-    <!-- Background Image -->
-    <img
-      src="{{ asset('images/hero.png') }}"
-      alt="Cuilan Swargi"
-      class="absolute inset-0 w-full h-full object-cover"
-    >
+  <!-- ========================= -->
+  <!-- MOBILE VERSION (≤735px) -->
+  <!-- ========================= -->
+  <div class="block md:hidden relative h-[100vh] w-full overflow-hidden">
 
-    <!-- Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/80"></div>
+      <!-- Background Full Width -->
+      <img
+          src="{{ asset('images/hero.png') }}"
+          alt="Cuilan Swargi"
+          class="absolute inset-0 w-full h-full object-cover"
+      >
 
-    <!-- Text Content -->
-    <div class="relative z-10 pt-16 sm:pt-20 md:pt-24 px-4 sm:px-6 md:px-12 font-aeonik">
-        <h1 class="font-crimson text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-[#F5F2D0] mb-2 sm:mb-3 leading-tight">
-            Cuilan Swargi
-        </h1>
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-black/45"></div>
 
-        <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-light italic mb-1.5 sm:mb-2">
-            Be Present, Be Authentic, Live Slow
-        </p>
+      <!-- Content -->
+      <div class="relative z-10 flex flex-col justify-center items-center text-center h-full px-6 text-white">
 
-        <p class="text-sm sm:text-base md:text-lg lg:text-xl text-white/80">
-            A Tiny Piece of Heaven
-        </p>
-    </div>
+          <h1 class="font-crimson text-4xl font-semibold leading-tight mb-4">
+              Cuilan Swargi
+          </h1>
 
-
-    <!-- Feature Cards -->
-    <div class="absolute bottom-12 sm:bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 w-[90%] sm:w-[92%] z-20">
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-
-        <!-- Card 1 -->
-        <div class="backdrop-blur-lg bg-white/15 rounded-lg sm:rounded-xl p-4 sm:p-5 text-white border border-white/20 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.6)]">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg border border-white/30 mb-2.5 sm:mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9.75L12 4.5l9 5.25M4.5 10.5V19.5h15V10.5" />
-            </svg>
-          </div>
-          <h3 class="text-sm sm:text-base font-medium mb-1">Stay Experience</h3>
-          <p class="text-xs sm:text-sm text-white/80 leading-relaxed">
-            Enjoy cozy cabins surrounded by nature, perfect for escaping the busy city life and relaxing.
+          <p class="text-lg italic mb-3">
+              Be Present, Be Authentic, Live Slow
           </p>
-        </div>
 
-        <!-- Card 2 -->
-        <div class="backdrop-blur-lg bg-white/15 rounded-lg sm:rounded-xl p-4 sm:p-5 text-white border border-white/20 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.6)]">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg border border-white/30 mb-2.5 sm:mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 3v10M12 3v10M16 3v10M5 13h14" />
-            </svg>
-          </div>
-          <h3 class="text-sm sm:text-base font-medium mb-1">Food & Beverages</h3>
-          <p class="text-xs sm:text-sm text-white/80 leading-relaxed">
-            Healthy and natural food made from fresh local ingredients.
+          <p class="text-sm text-white/80 max-w-xs mb-8">
+              A peaceful sanctuary where nature and comfort meet.
           </p>
-        </div>
 
-        <!-- Card 3 -->
-        <div class="backdrop-blur-lg bg-white/15 rounded-lg sm:rounded-xl p-4 sm:p-5 text-white border border-white/20 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.6)] sm:col-span-2 md:col-span-1">
-          <div class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg border border-white/30 mb-2.5 sm:mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-            </svg>
-          </div>
-          <h3 class="text-sm sm:text-base font-medium mb-1">Moments & Memories</h3>
-          <p class="text-xs sm:text-sm text-white/80 leading-relaxed">
-            Perfect place to spend quality time with people you love.
-          </p>
-        </div>
+          <a href="#penginapan"
+             class="px-8 py-3 rounded-full border border-white text-sm tracking-wide hover:bg-white hover:text-black transition duration-300">
+              Discover More
+          </a>
 
       </div>
-    </div>
 
   </div>
+
+
+
+  <!-- ========================= -->
+  <!-- DESKTOP VERSION (≥736px) -->
+  <!-- ========================= -->
+  <div class="hidden md:block px-4 py-8 max-w-[1200px] mx-auto">
+    <div class="relative min-h-[650px] rounded-2xl overflow-hidden shadow-xl">
+
+        <!-- Background -->
+        <img
+            src="{{ asset('images/hero.png') }}"
+            alt="Cuilan Swargi"
+            class="absolute inset-0 w-full h-full object-cover"
+        >
+
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/80"></div>
+
+        <!-- Text -->
+        <div class="relative z-10 pt-24 px-12 text-white">
+            <h1 class="font-crimson text-5xl lg:text-6xl font-semibold mb-4">
+                Cuilan Swargi
+            </h1>
+
+            <p class="text-2xl italic mb-2">
+                Be Present, Be Authentic, Live Slow
+            </p>
+
+            <p class="text-lg text-white/80">
+                A Tiny Piece of Heaven
+            </p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="absolute bottom-20 left-1/2 -translate-x-1/2 w-[90%] z-20">
+          <div class="grid md:grid-cols-3 gap-4">
+
+            <div class="backdrop-blur-md bg-white/10 rounded-xl p-5 text-white border border-white/20">
+                <h3 class="text-base font-medium mb-2">Stay Experience</h3>
+                <p class="text-sm text-white/80">
+                    Cozy cabins surrounded by nature.
+                </p>
+            </div>
+
+            <div class="backdrop-blur-md bg-white/10 rounded-xl p-5 text-white border border-white/20">
+                <h3 class="text-base font-medium mb-2">Food & Beverages</h3>
+                <p class="text-sm text-white/80">
+                    Natural food from fresh local ingredients.
+                </p>
+            </div>
+
+            <div class="backdrop-blur-md bg-white/10 rounded-xl p-5 text-white border border-white/20">
+                <h3 class="text-base font-medium mb-2">Moments & Memories</h3>
+                <p class="text-sm text-white/80">
+                    Spend quality time with people you love.
+                </p>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+
 </section>
 
-
-
 <!-- penginapan -->
-<section class="py-8 sm:py-10 md:py-12 lg:py-16 px-3 sm:px-4 md:px-8 max-w-[1200px] mx-auto">
+<section id="penginapan" class="py-8 sm:py-10 md:py-12 lg:py-16 px-3 sm:px-4 md:px-8 max-w-[1200px] mx-auto">
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 sm:mb-8">
         <div>
@@ -117,9 +150,11 @@
     </div>
 
     <!-- Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+    <div class="overflow-x-auto pb-4 -mx-3 sm:-mx-4 md:-mx-8 px-3 sm:px-4 md:px-8 scroll-smooth"
+         style="scrollbar-width: thin; scrollbar-color: #2f5d50 transparent;">
+        <div class="flex gap-4 sm:gap-5" style="width: max-content;">
         @foreach($accommodations as $item)
-        <div class="relative group rounded-xl sm:rounded-2xl overflow-hidden">
+        <div class="relative group rounded-xl sm:rounded-2xl overflow-hidden flex-shrink-0 w-[280px] sm:w-[320px] md:w-[340px]">
             <!-- Image -->
             <img 
                 src="{{ $item->images->first() 
@@ -175,7 +210,8 @@
             </div>
         </div>
         @endforeach
-    </div>
+        </div>{{-- end flex --}}
+    </div>{{-- end overflow-x-auto --}}
 </section>
 
 

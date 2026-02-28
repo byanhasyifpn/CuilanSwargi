@@ -4,30 +4,33 @@
 
 @section('content')
 
-<!-- Header -->
-<section class="pt-24 pb-12">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-        <h1 class="text-4xl md:text-5xl font-semibold text-primary mb-5">
+<!-- ================= HEADER ================= -->
+<section class="pt-16 sm:pt-20 pb-16 sm:pb-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl text-primary mb-3 sm:mb-6"
+            style="font-family:'Crimson Text', serif;">
             Explored Cuilan Swargi
         </h1>
-        <p class="text-gray-500 max-w-3xl mx-auto leading-relaxed">
-            Discover moments captured at Cuilan Swargi glimpses of nature, serenity, and the quiet beauty that surrounds every stay.
+        <p class="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            Discover moments captured at Cuilan Swargi — glimpses of nature,
+            serenity, and the quiet beauty that surrounds every stay.
         </p>
     </div>
 </section>
 
-<!-- Gallery -->
-<section class="pb-28">
-    <div class="max-w-7xl mx-auto px-6">
+
+<!-- ================= GALLERY ================= -->
+<section class="pb-20 sm:pb-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
 
         @if($galleries->count() > 0)
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
 
             @foreach($galleries as $index => $gallery)
                 <div 
                     onclick="openModal({{ $index }})"
-                    class="cursor-pointer group relative rounded-2xl overflow-hidden bg-gray-100 hover:shadow-lg transition-all duration-300">
+                    class="cursor-pointer group relative rounded-xl sm:rounded-2xl overflow-hidden bg-gray-100 hover:shadow-xl transition-all duration-300">
 
                     <div class="aspect-square overflow-hidden">
                         <img 
@@ -37,22 +40,25 @@
                         >
                     </div>
 
-                    <!-- Overlay dengan title (muncul saat hover) -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                        <h3 class="text-white text-sm font-medium line-clamp-2">{{ $gallery->title }}</h3>
+                    <!-- Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-3 sm:p-4">
+                        <h3 class="text-white text-xs sm:text-sm font-medium line-clamp-2">
+                            {{ $gallery->title }}
+                        </h3>
                     </div>
 
-                    <!-- Icon zoom indicator -->
-                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-100 scale-90">
-                        <svg class="w-4 h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"></path>
+                    <!-- Zoom Icon -->
+                    <div class="absolute top-2 right-2 sm:top-3 sm:right-3 bg-white/90 backdrop-blur-sm p-1.5 sm:p-2 rounded-full opacity-0 group-hover:opacity-100 transition duration-300">
+                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/>
                         </svg>
                     </div>
+
                 </div>
             @endforeach
 
-            </div>
-
+        </div>
 
         @else
 
@@ -69,37 +75,37 @@
 
 
 
-<!-- MODAL -->
+<!-- ================= MODAL ================= -->
 <div id="imageModal"
      class="fixed inset-0 hidden z-[9999] flex items-center justify-center
-            bg-black/70 backdrop-blur-sm">
+            bg-black/80 backdrop-blur-sm">
 
     <!-- Close -->
     <button onclick="closeModal()" 
-        class="absolute top-6 right-8 text-white text-4xl font-light hover:opacity-70 transition">
+        class="absolute top-4 right-5 sm:top-6 sm:right-8 text-white text-3xl sm:text-4xl font-light hover:opacity-70 transition">
         &times;
     </button>
 
     <!-- Prev -->
     <button onclick="prevSlide()" 
-        class="absolute left-6 md:left-12 text-white text-4xl hover:opacity-70 transition">
+        class="absolute left-3 sm:left-8 text-white text-3xl sm:text-4xl hover:opacity-70 transition">
         ❮
     </button>
 
     <!-- Next -->
     <button onclick="nextSlide()" 
-        class="absolute right-6 md:right-12 text-white text-4xl hover:opacity-70 transition">
+        class="absolute right-3 sm:right-8 text-white text-3xl sm:text-4xl hover:opacity-70 transition">
         ❯
     </button>
 
     <!-- Image Wrapper -->
-    <div class="text-center px-6">
+    <div class="text-center px-4 sm:px-6 w-full max-w-5xl">
 
         <img id="modalImage"
-             class="max-h-[80vh] mx-auto rounded-2xl shadow-2xl object-contain transition duration-300">
+             class="max-h-[75vh] sm:max-h-[85vh] mx-auto rounded-xl sm:rounded-2xl shadow-2xl object-contain transition duration-300">
 
         <h2 id="modalTitle"
-            class="text-white text-2xl mt-6 font-medium">
+            class="text-white text-lg sm:text-2xl mt-4 sm:mt-6 font-medium px-4">
         </h2>
 
     </div>
@@ -108,6 +114,7 @@
 
 
 
+<!-- ================= SCRIPT ================= -->
 <script>
 
     let galleries = [
@@ -124,7 +131,6 @@
     function openModal(index) {
         currentIndex = index;
         showSlide();
-
         document.getElementById('imageModal').classList.remove('hidden');
         document.body.style.overflow = 'hidden';
     }
@@ -149,7 +155,7 @@
         showSlide();
     }
 
-    // ESC to close
+    // Keyboard Navigation
     document.addEventListener('keydown', function(e) {
         if (e.key === "Escape") closeModal();
         if (e.key === "ArrowRight") nextSlide();
@@ -162,6 +168,5 @@
     });
 
 </script>
-
 
 @endsection

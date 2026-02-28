@@ -193,327 +193,241 @@
         }
 
         
-        /* Footer Styles */
-        .footer {
-            background: #2E514B;
-            color: white;
-            padding: 4rem 2rem 2rem;
-        }
+        /* Footer Styles - More Compact */
+.footer {
+    background: #2E514B;
+    color: white;
+    padding: 3rem 2rem 1.5rem; /* lebih pendek */
+}
 
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
-        .footer-top {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 4rem;
-            margin-bottom: 3rem;
-        }
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem; /* lebih kecil */
+    margin-bottom: 2rem; /* lebih kecil */
+}
 
-        .footer-left {
-            max-width: 480px;
-        }
+.footer-left {
+    max-width: 420px; /* sedikit lebih ramping */
+}
 
-        .footer-logo {
-            width: 70px;
-            height: 70px;
-            margin-bottom: 1.5rem;
-            border-radius: 50%;
-        }
+.footer-logo {
+    width: 60px; /* lebih kecil */
+    height: 60px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+}
 
-        .footer-title {
-            font-family: 'Crimson Text', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            line-height: 1.3;
-            margin-bottom: 1rem;
-            color: white;
-        }
+.footer-title {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.6rem; /* lebih kecil */
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 0.8rem;
+}
 
-        .footer-desc {
-            font-size: 0.95rem;
-            opacity: 0.85;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.85);
-        }
+.footer-desc {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    line-height: 1.5;
+}
 
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; /* lebih rapat */
+}
 
-        .footer-column h4 {
-            font-size: 1rem;
-            margin-bottom: 1.2rem;
-            font-weight: 500;
-            font-family: 'Crimson Text', serif;
-            color: white;
-        }
+.footer-column h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.9rem;
+}
 
-        .footer-column ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+.footer-column ul li {
+    margin-bottom: 0.6rem; /* lebih rapat */
+}
 
-        .footer-column ul li {
-            margin-bottom: 0.8rem;
-        }
+.footer-column ul li a {
+    font-size: 0.85rem;
+}
 
-        .footer-column ul li a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-column ul li a:hover {
-            color: white;
-        }
-
-        .footer-bottom-custom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
+.footer-bottom-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1.2rem; /* lebih kecil */
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.85rem;
+}
         
         /* ========================================
-           RESPONSIVE BREAKPOINTS
-        ======================================== */
-        
-        /* Tablet (1024px and below) */
-        @media (max-width: 1024px) {
-            .navbar {
-                padding: 0.875rem 1.5rem;
-            }
-            
-            .navbar-logo img {
-                width: 55px;
-                height: 55px;
-            }
-            
-            .navbar-menu {
-                gap: 2rem;
-            }
-            
-            .navbar-menu a {
-                font-size: 0.9rem;
-            }
-            
-            .navbar-cta {
-                padding: 0.5rem 1.25rem;
-                font-size: 0.85rem;
-            }
-            
-            /* Footer Tablet */
-            .footer {
-                padding: 3.5rem 1.5rem 2rem;
-            }
-            
-            .footer-top {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .footer-left {
-                max-width: 100%;
-            }
-            
-            .footer-links {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
-            }
-        }
-        
-        /* Mobile (768px and below) */
-        @media (max-width: 768px) {
-            /* Navbar Mobile */
-            .navbar {
-                padding: 0.75rem 1rem;
-            }
-            
-            .navbar-logo img {
-                width: 50px;
-                height: 50px;
-            }
+   RESPONSIVE BREAKPOINTS (FINAL CLEAN)
+======================================== */
 
-            .navbar-menu,
-            .navbar-cta.desktop {
-                display: none;
-            }
-            
-            .mobile-menu-button {
-                display: block;
-            }
-            
-            /* Footer Mobile */
-            .footer {
-                padding: 3rem 1.25rem 1.5rem;
-            }
-            
-            .footer-logo {
-                width: 60px;
-                height: 60px;
-                margin-bottom: 1.2rem;
-            }
-            
-            .footer-title {
-                font-size: 1.75rem;
-                margin-bottom: 0.875rem;
-            }
-            
-            .footer-desc {
-                font-size: 0.9rem;
-            }
+/* ========================================
+   TABLET (1024px and below)
+======================================== */
+@media (max-width: 1024px) {
 
-            .footer-top {
-                gap: 2.5rem;
-                margin-bottom: 2.5rem;
-            }
+    /* Navbar */
+    .navbar {
+        padding: 0.875rem 1.5rem;
+    }
 
-            .footer-links {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-            
-            .footer-column:last-child {
-                grid-column: 1 / -1;
-            }
+    .navbar-logo img {
+        width: 55px;
+        height: 55px;
+    }
 
-            .footer-bottom-custom {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: center;
-                font-size: 0.85rem;
-                padding-top: 1.5rem;
-            }
-        }
-        
-        /* Small Mobile (480px and below) */
-        @media (max-width: 480px) {
-            /* Navbar Small Mobile */
-            .navbar {
-                padding: 0.625rem 0.875rem;
-            }
-            
-            .navbar-logo img {
-                width: 45px;
-                height: 45px;
-            }
-            
-            .mobile-menu-button svg {
-                width: 24px;
-                height: 24px;
-            }
-            
-            .mobile-menu ul li a {
-                font-size: 0.95rem;
-                padding: 0.875rem 1.5rem;
-            }
-            
-            .mobile-menu .navbar-cta {
-                margin: 0.875rem 1.5rem 0.5rem;
-                padding: 0.625rem 1.25rem;
-                font-size: 0.875rem;
-            }
-            
-            /* Footer Small Mobile */
-            .footer {
-                padding: 2.5rem 1rem 1.25rem;
-            }
-            
-            .footer-logo {
-                width: 55px;
-                height: 55px;
-                margin-bottom: 1rem;
-            }
-            
-            .footer-title {
-                font-size: 1.5rem;
-                margin-bottom: 0.75rem;
-            }
-            
-            .footer-desc {
-                font-size: 0.85rem;
-                line-height: 1.5;
-            }
-            
-            .footer-top {
-                gap: 2rem;
-                margin-bottom: 2rem;
-            }
-            
-            .footer-links {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .footer-column:last-child {
-                grid-column: auto;
-            }
-            
-            .footer-column h4 {
-                font-size: 0.95rem;
-                margin-bottom: 1rem;
-            }
-            
-            .footer-column ul li {
-                margin-bottom: 0.7rem;
-            }
-            
-            .footer-column ul li a {
-                font-size: 0.85rem;
-            }
-            
-            .footer-bottom-custom {
-                font-size: 0.8rem;
-                padding-top: 1.25rem;
-            }
-        }
-        
-        /* Extra Small Mobile (375px and below) */
-        @media (max-width: 375px) {
-            .navbar {
-                padding: 0.5rem 0.75rem;
-            }
-            
-            .navbar-logo img {
-                width: 42px;
-                height: 42px;
-            }
-            
-            .footer {
-                padding: 2rem 0.875rem 1rem;
-            }
-            
-            .footer-logo {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .footer-title {
-                font-size: 1.35rem;
-            }
-            
-            .footer-desc {
-                font-size: 0.8rem;
-            }
-            
-            .footer-column h4 {
-                font-size: 0.9rem;
-            }
-            
-            .footer-column ul li a {
-                font-size: 0.8rem;
-            }
-        }
+    .navbar-menu {
+        gap: 2rem;
+    }
+
+    .navbar-menu a {
+        font-size: 0.9rem;
+    }
+
+    .navbar-cta {
+        padding: 0.5rem 1.25rem;
+        font-size: 0.85rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 2.5rem 1.5rem 1.25rem;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+
+/* ========================================
+   MOBILE (768px and below)
+======================================== */
+@media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar {
+        padding: 0.75rem 1rem;
+    }
+
+    .navbar-logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .navbar-menu,
+    .navbar-cta.desktop {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: block;
+    }
+
+    /* Footer (COMPACT VERSION) */
+    .footer {
+        padding: 2rem 1rem 1rem;
+    }
+
+    .footer-logo {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 0.75rem;
+    }
+
+    .footer-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-desc {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+
+    .footer-top {
+        gap: 1.5rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .footer-column h4 {
+        font-size: 0.9rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-column ul li a {
+        font-size: 0.8rem;
+    }
+
+    .footer-bottom-custom {
+        flex-direction: column;
+        gap: 0.25rem;
+        text-align: center;
+        font-size: 0.75rem;
+        padding-top: 0.8rem;
+    }
+}
+
+
+/* ========================================
+   SMALL MOBILE (480px and below)
+======================================== */
+@media (max-width: 480px) {
+
+    .navbar {
+        padding: 0.625rem 0.875rem;
+    }
+
+    .navbar-logo img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .mobile-menu-button svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .footer {
+        padding: 1.75rem 0.875rem 0.75rem;
+    }
+
+    .footer-title {
+        font-size: 1.15rem;
+    }
+
+    .footer-desc {
+        font-size: 0.8rem;
+    }
+
+    .footer-bottom-custom {
+        font-size: 0.7rem;
+    }
+}
     </style>
 </head>
 <body class="bg-gray-50">
