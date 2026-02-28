@@ -8,16 +8,24 @@
     
     body {
         font-family: 'Newsreader', serif;
+        /* Cegah overflow horizontal di semua browser */
+        overflow-x: hidden;
     }
     
     .font-crimson {
         font-family: 'Crimson Text', serif;
     }
 
-    /* Safari Rendering Fix */
-    .hero-fix {
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
+    /* Fix vh Safari — gunakan -webkit-fill-available */
+    .hero-mobile {
+        height: 100vh;
+        height: -webkit-fill-available;
+    }
+
+    /* Pastikan semua section tidak overflow */
+    section {
+        max-width: 100%;
+        box-sizing: border-box;
     }
 </style>
 
@@ -27,19 +35,16 @@
   <!-- ========================= -->
   <!-- MOBILE VERSION (≤735px) -->
   <!-- ========================= -->
-  <div class="block md:hidden relative h-[100vh] w-full overflow-hidden">
+  <div class="block md:hidden hero-mobile relative w-full overflow-hidden">
 
-      <!-- Background Full Width -->
       <img
           src="{{ asset('images/hero.png') }}"
           alt="Cuilan Swargi"
           class="absolute inset-0 w-full h-full object-cover"
       >
 
-      <!-- Overlay -->
       <div class="absolute inset-0 bg-black/45"></div>
 
-      <!-- Content -->
       <div class="relative z-10 flex flex-col justify-center items-center text-center h-full px-6 text-white">
 
           <h1 class="font-crimson text-4xl font-semibold leading-tight mb-4">
@@ -63,25 +68,20 @@
 
   </div>
 
-
-
   <!-- ========================= -->
   <!-- DESKTOP VERSION (≥736px) -->
   <!-- ========================= -->
-  <div class="hidden md:block px-4 py-8 max-w-[1200px] mx-auto">
+  <div class="hidden md:block px-4 py-4 max-w-[1200px] mx-auto">
     <div class="relative min-h-[650px] rounded-2xl overflow-hidden shadow-xl">
 
-        <!-- Background -->
         <img
             src="{{ asset('images/hero.png') }}"
             alt="Cuilan Swargi"
             class="absolute inset-0 w-full h-full object-cover"
         >
 
-        <!-- Overlay -->
         <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/80"></div>
 
-        <!-- Text -->
         <div class="relative z-10 pt-24 px-12 text-white">
             <h1 class="font-crimson text-5xl lg:text-6xl font-semibold mb-4">
                 Cuilan Swargi
@@ -96,29 +96,22 @@
             </p>
         </div>
 
-        <!-- Feature Cards -->
         <div class="absolute bottom-20 left-1/2 -translate-x-1/2 w-[90%] z-20">
           <div class="grid md:grid-cols-3 gap-4">
 
             <div class="backdrop-blur-md bg-white/10 rounded-xl p-5 text-white border border-white/20">
                 <h3 class="text-base font-medium mb-2">Stay Experience</h3>
-                <p class="text-sm text-white/80">
-                    Cozy cabins surrounded by nature.
-                </p>
+                <p class="text-sm text-white/80">Cozy cabins surrounded by nature.</p>
             </div>
 
             <div class="backdrop-blur-md bg-white/10 rounded-xl p-5 text-white border border-white/20">
                 <h3 class="text-base font-medium mb-2">Food & Beverages</h3>
-                <p class="text-sm text-white/80">
-                    Natural food from fresh local ingredients.
-                </p>
+                <p class="text-sm text-white/80">Natural food from fresh local ingredients.</p>
             </div>
 
             <div class="backdrop-blur-md bg-white/10 rounded-xl p-5 text-white border border-white/20">
                 <h3 class="text-base font-medium mb-2">Moments & Memories</h3>
-                <p class="text-sm text-white/80">
-                    Spend quality time with people you love.
-                </p>
+                <p class="text-sm text-white/80">Spend quality time with people you love.</p>
             </div>
 
           </div>
@@ -129,10 +122,16 @@
 
 </section>
 
-<!-- penginapan -->
-<section id="penginapan" class="py-8 sm:py-10 md:py-12 lg:py-16 px-3 sm:px-4 md:px-8 max-w-[1200px] mx-auto">
-    <!-- Header -->
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 sm:mb-8">
+
+<!-- Penginapan -->
+{{--
+    FIX: Hilangkan negative margin (-mx-*) yang tidak konsisten di Safari.
+    Ganti dengan pendekatan overflow-hidden pada wrapper + padding konsisten.
+--}}
+<section id="penginapan" class="py-6 sm:py-8 md:py-10 max-w-[1200px] mx-auto">
+
+    <!-- Header — padding konsisten kiri-kanan -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 sm:mb-8 px-4 sm:px-6 md:px-8">
         <div>
             <h2 class="font-crimson text-2xl sm:text-3xl md:text-4xl font-semibold text-primary mb-2">
                 A place to stay, a place to breathe.
@@ -149,87 +148,86 @@
         </a>
     </div>
 
-    <!-- Cards -->
-    <div class="overflow-x-auto pb-4 -mx-3 sm:-mx-4 md:-mx-8 px-3 sm:px-4 md:px-8 scroll-smooth"
-         style="scrollbar-width: thin; scrollbar-color: #2f5d50 transparent;">
-        <div class="flex gap-4 sm:gap-5" style="width: max-content;">
-        @foreach($accommodations as $item)
-        <div class="relative group rounded-xl sm:rounded-2xl overflow-hidden flex-shrink-0 w-[280px] sm:w-[320px] md:w-[340px]">
-            <!-- Image -->
-            <img 
-                src="{{ $item->images->first() 
-                        ? asset('storage/'.$item->images->first()->image) 
-                        : asset('images/placeholder.jpg') }}"
-                class="w-full h-[280px] sm:h-[320px] md:h-[340px] object-cover group-hover:scale-110 transition duration-700"
-                alt="{{ $item->name }}">
+    {{--
+        FIX: Ganti -mx + px dengan padding hanya di sisi kiri,
+        biarkan scroll ke kanan natural. Gunakan overflow-hidden
+        pada wrapper luar, bukan negative margin.
+    --}}
+    <div class="overflow-hidden">
+        <div class="overflow-x-auto pb-4 px-4 sm:px-6 md:px-8"
+             style="scrollbar-width: thin; scrollbar-color: #2f5d50 transparent; -webkit-overflow-scrolling: touch;">
+            <div class="flex gap-4 sm:gap-5" style="width: max-content;">
+            @foreach($accommodations as $item)
+            <div class="relative group rounded-xl sm:rounded-2xl overflow-hidden flex-shrink-0 w-[280px] sm:w-[320px] md:w-[340px]">
+                <img 
+                    src="{{ $item->images->first() 
+                            ? asset('storage/'.$item->images->first()->image) 
+                            : asset('images/placeholder.jpg') }}"
+                    class="w-full h-[280px] sm:h-[320px] md:h-[340px] object-cover group-hover:scale-110 transition duration-700"
+                    alt="{{ $item->name }}">
 
-            <!-- Gradient Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
 
-            <!-- Content -->
-            <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5 text-white">
-                <h3 class="font-crimson text-lg sm:text-xl font-semibold mb-1 sm:mb-1.5">
-                    {{ $item->name }}
-                </h3>
+                <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5 text-white">
+                    <h3 class="font-crimson text-lg sm:text-xl font-semibold mb-1 sm:mb-1.5">
+                        {{ $item->name }}
+                    </h3>
 
-                <div class="flex items-center gap-2 text-xs sm:text-sm mb-1 sm:mb-1.5 opacity-90">
-                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/>
-                    </svg>
-                    <span>{{ $item->capacity }} Guests</span>
+                    <div class="flex items-center gap-2 text-xs sm:text-sm mb-1 sm:mb-1.5 opacity-90">
+                        <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/>
+                        </svg>
+                        <span>{{ $item->capacity }} Guests</span>
+                    </div>
+
+                    @php
+                        $prices = $item->services->pluck('price');
+                        $minPrice = $prices->min();
+                        $maxPrice = $prices->max();
+                    @endphp
+
+                    <div class="text-xs sm:text-sm mb-1 opacity-90">
+                        {{ $item->services->pluck('name')->implode(', ') }}
+                    </div>
+
+                    <p class="text-xs sm:text-sm mb-2.5 sm:mb-3 opacity-90">
+                        @if($minPrice && $maxPrice)
+                            IDR {{ number_format($minPrice, 0, ',', '.') }}
+                            @if($minPrice != $maxPrice)
+                                - {{ number_format($maxPrice, 0, ',', '.') }}
+                            @endif
+                            / night
+                        @endif
+                    </p>
+
+                    <a href="{{ route('accommodation') }}"
+                       class="inline-block w-full text-center text-xs sm:text-sm border border-white/40 py-1.5 sm:py-2 rounded-full hover:bg-white hover:text-primary transition">
+                        View Details
+                    </a>
                 </div>
-
-                @php
-    $prices = $item->services->pluck('price');
-    $minPrice = $prices->min();
-    $maxPrice = $prices->max();
-@endphp
-
-{{-- SERVICE NAMES --}}
-<div class="text-xs sm:text-sm mb-1 opacity-90">
-    {{ $item->services->pluck('name')->implode(', ') }}
-</div>
-
-{{-- PRICE RANGE --}}
-<p class="text-xs sm:text-sm mb-2.5 sm:mb-3 opacity-90">
-    @if($minPrice && $maxPrice)
-        IDR {{ number_format($minPrice, 0, ',', '.') }}
-        @if($minPrice != $maxPrice)
-            - {{ number_format($maxPrice, 0, ',', '.') }}
-        @endif
-        / night
-    @endif
-</p>
-
-
-                <a href="{{ route('accommodation') }}"
-                   class="inline-block w-full text-center text-xs sm:text-sm border border-white/40 py-1.5 sm:py-2 rounded-full hover:bg-white hover:text-primary transition">
-                    View Details
-                </a>
+            </div>
+            @endforeach
             </div>
         </div>
-        @endforeach
-        </div>{{-- end flex --}}
-    </div>{{-- end overflow-x-auto --}}
+    </div>
+
 </section>
 
 
 <!-- Moments Section -->
-<section class="bg-[#2E514B] py-10 sm:py-12 md:py-14 lg:py-18 px-3 sm:px-4 md:px-8">
+{{-- FIX: Gunakan w-full box-border alih-alih biarkan browser masing-masing kalkulasi --}}
+<section class="bg-[#2E514B] py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 w-full box-border">
     <div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center">
         
-        <!-- Image -->
         <div>
             <img src="{{ asset('images/moments.png') }}" 
                  alt="Moments at Cuilan Swargi" 
                  class="w-full h-[300px] sm:h-[360px] md:h-[420px] lg:h-[480px] object-cover rounded-xl sm:rounded-2xl">
         </div>
         
-        <!-- Text -->
         <div class="text-white">
             
-            <!-- Title -->
             <h2 class="font-crimson text-2xl sm:text-3xl md:text-4xl font-medium mb-1.5 sm:mb-2">
                 Moments That
             </h2>
@@ -238,12 +236,8 @@
                 Brought Us Together
             </h3>
 
-            <!-- Decorative Icon -->
-            <div class="text-white text-lg sm:text-xl mb-4 sm:mb-5">
-                ✺
-            </div>
+            <div class="text-white text-lg sm:text-xl mb-4 sm:mb-5">✺</div>
             
-            <!-- Paragraph -->
             <p class="text-sm sm:text-base md:text-lg text-white/80 leading-relaxed max-w-xl">
                 Thank you for being part of this journey. May what we started here 
                 continue to grow into meaningful experiences, deeper connections, 
@@ -258,11 +252,10 @@
 
 
 <!-- Impact Section -->
-<section class="bg-[#ffff] py-10 sm:py-12 md:py-14 lg:py-18 px-4 sm:px-6 md:px-10 w-full">
+<section class="bg-white py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 w-full box-border">
 
     <div class="max-w-[1200px] mx-auto">
 
-        <!-- Header -->
         <div class="flex flex-col lg:flex-row justify-between gap-6 sm:gap-8 mb-8 sm:mb-10 md:mb-12">
             
             <div class="max-w-2xl">
@@ -281,17 +274,13 @@
             </div>
         </div>
 
-        <!-- Accordion -->
         <div class="space-y-3 sm:space-y-4">
 
-            <!-- Item 1 -->
             <div class="accordion-item bg-[#F5F5F5] rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-500">
-                
                 <div class="accordion-header cursor-pointer px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 flex justify-between items-center text-primary text-base sm:text-lg md:text-xl">
                     <span>Creating Meaningful Experiences Rooted in Nature</span>
                     <span class="accordion-icon text-lg sm:text-xl transition-transform duration-300 flex-shrink-0 ml-2">↘</span>
                 </div>
-
                 <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500">
                     <div class="bg-[#2f5d50] text-white px-4 sm:px-6 md:px-8 py-6 sm:py-7 md:py-8">
                         <div class="border-l border-white/40 pl-4 sm:pl-5 text-white/80 text-sm sm:text-base leading-relaxed">
@@ -302,15 +291,11 @@
                 </div>
             </div>
 
-
-            <!-- Item 2 -->
             <div class="accordion-item bg-[#F5F5F5] rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-500">
-                
                 <div class="accordion-header cursor-pointer px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 flex justify-between items-center text-primary text-base sm:text-lg md:text-xl">
                     <span>Visitors & Experiences Shared</span>
                     <span class="accordion-icon text-lg sm:text-xl transition-transform duration-300 flex-shrink-0 ml-2">↘</span>
                 </div>
-
                 <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500">
                     <div class="bg-[#2f5d50] text-white px-4 sm:px-6 md:px-8 py-6 sm:py-7 md:py-8">
                         <div class="border-l border-white/40 pl-4 sm:pl-5 text-white/80 text-sm sm:text-base leading-relaxed">
@@ -321,15 +306,11 @@
                 </div>
             </div>
 
-
-            <!-- Item 3 -->
             <div class="accordion-item bg-[#F5F5F5] rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-500">
-                
                 <div class="accordion-header cursor-pointer px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 flex justify-between items-center text-primary text-base sm:text-lg md:text-xl">
                     <span>Community & Cultural Connection</span>
                     <span class="accordion-icon text-lg sm:text-xl transition-transform duration-300 flex-shrink-0 ml-2">↘</span>
                 </div>
-
                 <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500">
                     <div class="bg-[#2f5d50] text-white px-4 sm:px-6 md:px-8 py-6 sm:py-7 md:py-8">
                         <div class="border-l border-white/40 pl-4 sm:pl-5 text-white/80 text-sm sm:text-base leading-relaxed">
@@ -340,15 +321,11 @@
                 </div>
             </div>
 
-
-            <!-- Item 4 -->
             <div class="accordion-item bg-[#F5F5F5] rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-500">
-                
                 <div class="accordion-header cursor-pointer px-4 sm:px-6 md:px-8 py-4 sm:py-5 md:py-6 flex justify-between items-center text-primary text-base sm:text-lg md:text-xl">
                     <span>Committed to Sustainable Growth</span>
                     <span class="accordion-icon text-lg sm:text-xl transition-transform duration-300 flex-shrink-0 ml-2">↘</span>
                 </div>
-
                 <div class="accordion-content max-h-0 overflow-hidden transition-all duration-500">
                     <div class="bg-[#2f5d50] text-white px-4 sm:px-6 md:px-8 py-6 sm:py-7 md:py-8">
                         <div class="border-l border-white/40 pl-4 sm:pl-5 text-white/80 text-sm sm:text-base leading-relaxed">
@@ -363,9 +340,11 @@
     </div>
 </section>
 
-<section class="relative w-full min-h-[600px] sm:min-h-[700px] md:min-h-screen flex items-center px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-14 md:py-16 text-white">
 
-    <!-- Background -->
+<!-- How To Get There -->
+<section class="relative w-full flex items-center px-4 sm:px-6 md:px-8 py-10 sm:py-12 text-white box-border"
+         style="min-height: 500px;">
+
     <div class="absolute inset-0">
         <img src="{{ asset('images/bg-accommodation.png') }}"
              class="w-full h-full object-cover" 
@@ -375,7 +354,6 @@
 
     <div class="relative z-10 w-full max-w-6xl mx-auto">
 
-        <!-- Title -->
         <div class="mb-8 sm:mb-10 md:mb-12">
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-light tracking-wide">
                 How To Get To
@@ -385,32 +363,17 @@
             </h3>
         </div>
 
-        <!-- Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
 
-            <!-- TRAIN -->
             <div class="backdrop-blur-xl bg-white/10 border border-white/30 rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 shadow-2xl">
-
                 <div class="flex items-center gap-4 sm:gap-5 mb-5 sm:mb-6">
-
-                    <!-- Train Icon -->
                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-white/10 border border-white/30 flex items-center justify-center flex-shrink-0">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" 
-                             fill="none" 
-                             viewBox="0 0 24 24" 
-                             stroke-width="1.5" 
-                             stroke="currentColor" 
-                             class="w-7 h-7 sm:w-8 sm:h-8 text-white">
-                            <path stroke-linecap="round" stroke-linejoin="round" 
-                                d="M4.5 16.5V7.5A3 3 0 017.5 4.5h9a3 3 0 013 3v9m-15 0h15m-15 0l-1.5 3m16.5-3l1.5 3M9 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm6 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 sm:w-8 sm:h-8 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 16.5V7.5A3 3 0 017.5 4.5h9a3 3 0 013 3v9m-15 0h15m-15 0l-1.5 3m16.5-3l1.5 3M9 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm6 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
                         </svg>
-
                     </div>
-
                     <h4 class="text-xl sm:text-2xl font-light">Train</h4>
                 </div>
-
                 <div class="space-y-2 sm:space-y-2.5 md:space-y-3 text-sm sm:text-base text-white/90 leading-relaxed">
                     <p>YOGYAKARTA - PURWOKERTO (2 HOURS)</p>
                     <p>YOGYAKARTA (LEMPUYANGAN) - PURWOKERTO (2.5 HOURS)</p>
@@ -424,29 +387,15 @@
                 </div>
             </div>
 
-            <!-- BUS -->
             <div class="backdrop-blur-xl bg-white/10 border border-white/30 rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 shadow-2xl">
-
                 <div class="flex items-center gap-4 sm:gap-5 mb-5 sm:mb-6">
-
-                    <!-- Bus Icon -->
                     <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-white/10 border border-white/30 flex items-center justify-center flex-shrink-0">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" 
-                             fill="none" 
-                             viewBox="0 0 24 24" 
-                             stroke-width="1.5" 
-                             stroke="currentColor" 
-                             class="w-7 h-7 sm:w-8 sm:h-8 text-white">
-                            <path stroke-linecap="round" stroke-linejoin="round" 
-                                d="M8.25 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm7.5 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM3 8.25A2.25 2.25 0 015.25 6h13.5A2.25 2.25 0 0121 8.25v5.25A2.25 2.25 0 0118.75 15H5.25A2.25 2.25 0 013 13.5V8.25z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 sm:w-8 sm:h-8 text-white">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm7.5 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM3 8.25A2.25 2.25 0 015.25 6h13.5A2.25 2.25 0 0121 8.25v5.25A2.25 2.25 0 0118.75 15H5.25A2.25 2.25 0 013 13.5V8.25z" />
                         </svg>
-
                     </div>
-
                     <h4 class="text-xl sm:text-2xl font-light">Bus</h4>
                 </div>
-
                 <div class="space-y-2 sm:space-y-2.5 md:space-y-3 text-sm sm:text-base text-white/90 leading-relaxed">
                     <p>YOGYAKARTA - PURWOKERTO (6 HOURS)</p>
                     <p>SEMARANG - PURWOKERTO (7 HOURS)</p>
@@ -461,10 +410,10 @@
 </section>
 
 
-<section class="py-10 sm:py-12 md:py-14 lg:py-16 bg-white">
+<!-- Map -->
+<section class="py-10 sm:py-12 md:py-14 lg:py-16 bg-white w-full box-border">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
 
-        <!-- Title -->
         <div class="text-center mb-7 sm:mb-8 md:mb-10">
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-primary mb-2 sm:mb-3">
                 Find Us On The Map
@@ -474,29 +423,22 @@
             </p>
         </div>
 
-        <!-- Map Card -->
         <div class="rounded-xl sm:rounded-2xl overflow-hidden shadow-xl border border-gray-200">
-
-            <!-- Google Maps Embed -->
             <iframe 
                 src="https://www.google.com/maps?q=Cuilan+Swargi+Baturraden&output=embed"
                 width="100%" 
                 height="350" 
-                style="border:0;" 
+                style="border:0; display:block;" 
                 allowfullscreen="" 
                 loading="lazy"
                 class="w-full h-[300px] sm:h-[350px] md:h-[400px]">
             </iframe>
-
-
         </div>
 
-        <!-- Button -->
         <div class="text-center mt-6 sm:mt-7 md:mt-8">
             <a href="https://maps.google.com/?q=Cuilan+Swargi+Baturraden"
                target="_blank"
-               class="inline-block bg-primary text-white text-xs sm:text-sm px-5 sm:px-6 py-2 sm:py-2.5 rounded-full
-                      hover:bg-[#24423d] transition duration-300 shadow-lg">
+               class="inline-block bg-primary text-white text-xs sm:text-sm px-5 sm:px-6 py-2 sm:py-2.5 rounded-full hover:bg-[#24423d] transition duration-300 shadow-lg">
                 View on Google Maps
             </a>
         </div>
@@ -505,13 +447,10 @@
 </section>
 
 
-
-
 <!-- Ratings Section -->
-<section class="py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-10 bg-[#ffff]">
+<section class="py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 bg-white w-full box-border">
     <div class="max-w-[1200px] mx-auto">
 
-        <!-- Header + Arrow -->
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-7 sm:mb-8 md:mb-10">
             <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-primary leading-snug">
                 What People Say About Their Experience <br class="hidden md:block">
@@ -533,11 +472,9 @@
             </div>
         </div>
 
-        <!-- Slider -->
         <div class="overflow-hidden">
             <div id="ratingsSlider" class="flex gap-4 sm:gap-5 md:gap-6 transition-transform duration-500 ease-in-out">
 
-                <!-- Card 1 -->
                 <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
                     <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
                         "Such a peaceful and beautiful place. The view is absolutely breathtaking!"
@@ -548,7 +485,6 @@
                     </div>
                 </div>
 
-                <!-- Card 2 -->
                 <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
                     <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
                         "Cuilan Swargi is the perfect spot to relax and reconnect with nature."
@@ -559,7 +495,6 @@
                     </div>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
                     <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
                         "A hidden gem for anyone looking to escape the busy city life."
@@ -570,7 +505,6 @@
                     </div>
                 </div>
 
-                <!-- Card 4 -->
                 <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
                     <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
                         "Every corner feels thoughtfully designed and full of warmth."
@@ -581,7 +515,6 @@
                     </div>
                 </div>
 
-                <!-- Card 5 -->
                 <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
                     <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
                         "The atmosphere here is calm, refreshing, and truly unforgettable."
@@ -592,7 +525,6 @@
                     </div>
                 </div>
 
-                <!-- Card 6 -->
                 <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
                     <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
                         "It feels like a private paradise surrounded by nature."
@@ -603,7 +535,6 @@
                     </div>
                 </div>
 
-                <!-- Card 7 -->
                 <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
                     <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
                         "Highly recommended for families and couples who love serenity."
@@ -614,7 +545,6 @@
                     </div>
                 </div>
 
-                <!-- Card 8 -->
                 <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
                     <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
                         "The service was excellent and the environment felt very exclusive."
@@ -631,48 +561,33 @@
 </section>
 
 
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    /* =========================
-       ACCORDION
-    ========================== */
-
+    /* ACCORDION */
     document.querySelectorAll('.accordion-header').forEach(header => {
         header.addEventListener('click', function () {
-
             const item = this.parentElement;
             const content = item.querySelector('.accordion-content');
             const icon = item.querySelector('.accordion-icon');
-
             const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
 
             if (isOpen) {
-                // Tutup
                 content.style.maxHeight = "0px";
-                content.style.backgroundColor = "";
                 icon.style.transform = "rotate(0deg)";
             } else {
-                // Buka
                 content.style.maxHeight = content.scrollHeight + "px";
-                content.style.backgroundColor = "#16a34a";
                 icon.style.transform = "rotate(180deg)";
             }
         });
     });
 
-
-    /* =========================
-       SLIDER
-    ========================== */
-
+    /* SLIDER */
     const slider = document.getElementById('ratingsSlider');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
     if (slider && prevBtn && nextBtn) {
-
         let currentIndex = 0;
         const cards = document.querySelectorAll('.rating-card');
         const totalCards = cards.length;
@@ -686,71 +601,38 @@ document.addEventListener("DOMContentLoaded", function () {
         function updateSlider() {
             const cardsPerView = getCardsPerView();
             const maxIndex = totalCards - cardsPerView;
-
-            if (currentIndex > maxIndex) {
-                currentIndex = maxIndex;
-            }
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
 
             const cardWidth = cards[0].offsetWidth;
             const gap = window.innerWidth >= 768 ? 24 : (window.innerWidth >= 640 ? 20 : 16);
-            const offset = currentIndex * (cardWidth + gap);
-
-            slider.style.transform = `translateX(-${offset}px)`;
+            slider.style.transform = `translateX(-${currentIndex * (cardWidth + gap)}px)`;
         }
 
         prevBtn.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSlider();
-            }
+            if (currentIndex > 0) { currentIndex--; updateSlider(); }
         });
 
         nextBtn.addEventListener('click', () => {
-            const cardsPerView = getCardsPerView();
-            const maxIndex = totalCards - cardsPerView;
-
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-                updateSlider();
-            }
+            const maxIndex = totalCards - getCardsPerView();
+            if (currentIndex < maxIndex) { currentIndex++; updateSlider(); }
         });
 
-        // Auto slide
         setInterval(() => {
-            const cardsPerView = getCardsPerView();
-            const maxIndex = totalCards - cardsPerView;
-
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-            } else {
-                currentIndex = 0;
-            }
-
+            const maxIndex = totalCards - getCardsPerView();
+            currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
             updateSlider();
         }, 5000);
 
         window.addEventListener('resize', updateSlider);
-
         updateSlider();
     }
 
-
-    /* =========================
-       SMOOTH SCROLL
-    ========================== */
-
+    /* SMOOTH SCROLL */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-
             const target = document.querySelector(this.getAttribute('href'));
-
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
 

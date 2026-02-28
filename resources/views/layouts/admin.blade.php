@@ -70,7 +70,7 @@
             <nav class="mt-2 lg:mt-6">
                 <a href="{{ route('admin.dashboard') }}"
                    class="nav-link group block px-5 lg:px-6 py-3 transition-all duration-300 relative overflow-hidden {{ request()->routeIs('admin.dashboard') ? 'bg-primary/80 border-l-4 border-secondary' : '' }}">
-                    <span class="absolute inset-0 bg-secondary/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+                    <span class="absolute inset-0 bg-white/5 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                     <span class="absolute inset-y-0 left-0 w-1 bg-secondary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                     <span class="relative flex items-center">
                         <svg class="w-5 h-5 mr-3 transform group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@
 
                 <a href="{{ route('admin.gallery.index') }}"
                    class="nav-link group block px-5 lg:px-6 py-3 transition-all duration-300 relative overflow-hidden {{ request()->routeIs('admin.gallery.*') ? 'bg-primary/80 border-l-4 border-secondary' : '' }}">
-                    <span class="absolute inset-0 bg-secondary/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+                    <span class="absolute inset-0 bg-white/5 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                     <span class="absolute inset-y-0 left-0 w-1 bg-secondary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                     <span class="relative flex items-center">
                         <svg class="w-5 h-5 mr-3 transform group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -94,7 +94,7 @@
 
                 <a href="{{ route('admin.accommodation.index') }}"
                    class="nav-link group block px-5 lg:px-6 py-3 transition-all duration-300 relative overflow-hidden {{ request()->routeIs('admin.accommodation.*') ? 'bg-primary/80 border-l-4 border-secondary' : '' }}">
-                    <span class="absolute inset-0 bg-secondary/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+                    <span class="absolute inset-0 bg-white/5 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                     <span class="absolute inset-y-0 left-0 w-1 bg-secondary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                     <span class="relative flex items-center">
                         <svg class="w-5 h-5 mr-3 transform group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -106,7 +106,7 @@
 
                 <a href="{{ route('admin.article.index') }}"
                    class="nav-link group block px-5 lg:px-6 py-3 transition-all duration-300 relative overflow-hidden {{ request()->routeIs('admin.article.*') ? 'bg-primary/80 border-l-4 border-secondary' : '' }}">
-                    <span class="absolute inset-0 bg-secondary/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+                    <span class="absolute inset-0 bg-white/5 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                     <span class="absolute inset-y-0 left-0 w-1 bg-secondary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                     <span class="relative flex items-center">
                         <svg class="w-5 h-5 mr-3 transform group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -121,7 +121,7 @@
                     <a href="{{ route('home') }}"
                     target="_blank"
                     class="nav-link group block px-5 py-3 transition-all duration-300 relative overflow-hidden">
-                        <span class="absolute inset-0 bg-secondary/10 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
+                        <span class="absolute inset-0 bg-white/5 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                     <span class="absolute inset-y-0 left-0 w-1 bg-secondary transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></span>
                         <span class="relative flex items-center">
                             <svg class="w-5 h-5 mr-3 transform group-hover:scale-110 transition-transform duration-300"
