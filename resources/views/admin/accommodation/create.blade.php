@@ -4,13 +4,13 @@
 @section('header', 'Tambah Penginapan')
 
 @section('content')
-<div class="max-w-2xl">
-    <div class="bg-white rounded-lg shadow-md p-8">
+<div class="max-w-full sm:max-w-2xl">
+    <div class="bg-white rounded-lg shadow-md p-5 sm:p-8">
         <form action="{{ route('admin.accommodation.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            <div class="mb-6">
-                <label for="name" class="block text-gray-700 font-semibold mb-2">
+            <div class="mb-5 sm:mb-6">
+                <label for="name" class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">
                     Nama/Nomor Kamar <span class="text-red-500">*</span>
                 </label>
                 <input type="text" 
@@ -18,15 +18,15 @@
                        name="name" 
                        value="{{ old('name') }}"
                        placeholder="Contoh: Kamar Deluxe 1"
-                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('name') border-red-500 @enderror"
+                       class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('name') border-red-500 @enderror"
                        required>
                 @error('name')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    <p class="text-red-500 text-xs sm:text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="mb-6">
-                <label for="capacity" class="block text-gray-700 font-semibold mb-2">
+            <div class="mb-5 sm:mb-6">
+                <label for="capacity" class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">
                     Kapasitas (Orang) <span class="text-red-500">*</span>
                 </label>
                 <input type="number" 
@@ -35,15 +35,15 @@
                        value="{{ old('capacity') }}"
                        min="1"
                        placeholder="Contoh: 4"
-                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('capacity') border-red-500 @enderror"
+                       class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('capacity') border-red-500 @enderror"
                        required>
                 @error('capacity')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    <p class="text-red-500 text-xs sm:text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="mb-6">
-                <label for="images" class="block text-gray-700 font-semibold mb-2">
+            <div class="mb-5 sm:mb-6">
+                <label for="images" class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">
                     Gambar Kamar <span class="text-red-500">*</span>
                 </label>
                 <input type="file" 
@@ -51,39 +51,38 @@
                        name="images[]" 
                        accept="image/*"
                        multiple
-                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('images.*') border-red-500 @enderror"
+                       class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('images.*') border-red-500 @enderror"
                        onchange="previewImages(event)"
                        required>
                 @error('images.*')
-                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    <p class="text-red-500 text-xs sm:text-sm mt-1">{{ $message }}</p>
                 @enderror
-                <p class="text-gray-500 text-sm mt-1">Pilih beberapa gambar. Format: JPG, PNG, GIF. Maksimal 2MB per gambar</p>
+                <p class="text-gray-500 text-xs sm:text-sm mt-1">Pilih beberapa gambar. Format: JPG, PNG, GIF. Maksimal 2MB per gambar</p>
 
-                <div id="preview" class="mt-4 grid grid-cols-3 gap-4"></div>
+                <div id="preview" class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
             </div>
 
-            <hr class="my-6">
+            <hr class="my-5 sm:my-6">
 
-                        <h3 class="text-lg font-semibold mb-4">Tipe Service</h3>
+            <h3 class="text-base sm:text-lg font-semibold mb-4">Tipe Service</h3>
 
-                        <div id="services-wrapper"></div>
+            <div id="services-wrapper"></div>
 
-                        <button type="button"
-                                onclick="addService()"
-                    class="mb-6 bg-green-500 text-white px-4 py-2 rounded">
+            <button type="button"
+                    onclick="addService()"
+                    class="mb-5 sm:mb-6 bg-green-500 text-white px-4 py-2 rounded text-sm sm:text-base hover:bg-green-600 transition">
                 + Tambah Service
             </button>
 
-
-            <div class="flex space-x-4">
+            <div class="flex flex-wrap gap-3">
                 <button type="submit"
                         onclick="this.disabled=true; this.innerText='Menyimpan...'; this.form.submit();"
-                        class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition">
+                        class="bg-primary text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:bg-primary/90 transition text-sm sm:text-base">
                     Simpan
                 </button>
 
                 <a href="{{ route('admin.accommodation.index') }}" 
-                   class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition">
+                   class="bg-gray-500 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg hover:bg-gray-600 transition text-sm sm:text-base">
                     Batal
                 </a>
             </div>
@@ -104,7 +103,7 @@
             reader.onload = function(e) {
                 const img = document.createElement('img');
                 img.src = e.target.result;
-                img.className = 'w-full h-32 object-cover rounded-lg';
+                img.className = 'w-full h-28 sm:h-32 object-cover rounded-lg';
                 preview.appendChild(img);
             }
             
@@ -127,28 +126,28 @@ function addService() {
             </button>
 
             <div class="mb-3">
-                <label class="block font-semibold mb-1">Nama Service</label>
+                <label class="block font-semibold mb-1 text-sm">Nama Service</label>
                 <input type="text"
                        name="services[${serviceIndex}][name]"
-                       class="w-full border px-3 py-2 rounded"
+                       class="w-full border px-3 py-2 rounded text-sm"
                        placeholder="Contoh: Room Only"
                        required>
             </div>
 
             <div class="mb-3">
-                <label class="block font-semibold mb-1">Harga</label>
+                <label class="block font-semibold mb-1 text-sm">Harga</label>
                 <input type="number"
                        name="services[${serviceIndex}][price]"
-                       class="w-full border px-3 py-2 rounded"
+                       class="w-full border px-3 py-2 rounded text-sm"
                        placeholder="Contoh: 975000"
                        required>
             </div>
 
             <div>
-                <label class="block font-semibold mb-1">Fasilitas</label>
+                <label class="block font-semibold mb-1 text-sm">Fasilitas</label>
                 <textarea name="services[${serviceIndex}][facilities]"
                           rows="3"
-                          class="w-full border px-3 py-2 rounded"
+                          class="w-full border px-3 py-2 rounded text-sm"
                           placeholder="Pisahkan dengan koma"
                           required></textarea>
             </div>
