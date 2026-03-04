@@ -55,7 +55,7 @@
                 </p>
             </div>
 
-            <a href="#"
+            <a href="{{ route('booking.create') }}"
                class="inline-block bg-primary text-white px-6 py-2.5 rounded-full text-xs sm:text-sm tracking-wide hover:opacity-90 transition shadow-md">
                 Book Now
             </a>

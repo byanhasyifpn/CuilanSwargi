@@ -184,9 +184,18 @@
         </div>
 
         <a href="{{ route('accommodation') }}"
-           class="mt-3 sm:mt-4 md:mt-0 inline-flex items-center gap-2 bg-primary text-white px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-full hover:bg-primary/90 transition">
+           class="mt-3 sm:mt-4 md:mt-0 inline-flex items-center gap-2 border border-primary text-primary px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-full hover:bg-primary/5 transition">
             View All
             <span class="text-sm sm:text-base">↗</span>
+        </a>
+
+        <a href="{{ route('booking.create') }}"
+           class="mt-3 sm:mt-4 md:mt-0 inline-flex items-center gap-2 bg-primary text-white px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm rounded-full hover:bg-primary/90 transition shadow-sm">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            </svg>
+            Booking Now
         </a>
     </div>
 

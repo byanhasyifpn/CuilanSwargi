@@ -4,7 +4,7 @@
 @section('header', 'Dashboard')
 
 @section('content')
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
     <!-- Gallery Card -->
     <div class="bg-white rounded-lg shadow-md p-5 sm:p-6">
         <div class="flex items-center justify-between">
@@ -42,7 +42,7 @@
     </div>
 
     <!-- Article Card -->
-    <div class="bg-white rounded-lg shadow-md p-5 sm:p-6 sm:col-span-2 lg:col-span-1">
+    <div class="bg-white rounded-lg shadow-md p-5 sm:p-6">
         <div class="flex items-center justify-between">
             <div>
                 <p class="text-gray-500 text-xs sm:text-sm mb-1">Total Artikel</p>
@@ -57,6 +57,25 @@
         </div>
         <a href="{{ route('admin.article.index') }}" class="block mt-4 text-primary hover:text-primary/80 font-semibold text-sm sm:text-base">
             Kelola Artikel &rarr;
+        </a>
+    </div>
+
+    <!-- Booking Card -->
+    <div class="bg-white rounded-lg shadow-md p-5 sm:p-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <p class="text-gray-500 text-xs sm:text-sm mb-1">Total Booking</p>
+                <h3 class="text-2xl sm:text-3xl font-bold text-primary">{{ $bookingCount }}</h3>
+                <p class="text-xs sm:text-sm text-gray-500 mt-1">{{ $pendingBookingCount }} Pending</p>
+            </div>
+            <div class="bg-primary/10 p-3 sm:p-4 rounded-full flex-shrink-0">
+                <svg class="w-8 h-8 sm:w-10 sm:h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+            </div>
+        </div>
+        <a href="{{ route('admin.booking.index') }}" class="block mt-4 text-primary hover:text-primary/80 font-semibold text-sm sm:text-base">
+            Kelola Booking &rarr;
         </a>
     </div>
 </div>
