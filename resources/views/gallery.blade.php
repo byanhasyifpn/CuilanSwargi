@@ -5,7 +5,7 @@
 @section('content')
 
 <!-- ================= HEADER ================= -->
-<section class="pt-16 sm:pt-20 pb-16 sm:pb-20">
+<section class="pt-8 sm:pt-12 pb-12 sm:pb-16">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
         <h1 class="text-3xl sm:text-4xl md:text-5xl text-primary mb-3 sm:mb-6"
             style="font-family:'Crimson Text', serif;">
@@ -20,8 +20,8 @@
 
 
 <!-- ================= GALLERY ================= -->
-<section class="pb-20 sm:pb-28">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+<section class="pb-20 sm:pb-28 px-4 sm:px-6 md:px-8 lg:px-12">
+    <div class="w-full">
 
         @if($galleries->count() > 0)
 

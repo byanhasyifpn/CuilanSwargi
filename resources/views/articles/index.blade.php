@@ -5,9 +5,9 @@
 @section('content')
 
 <!-- Section Wrapper -->
-<section class="pt-16 sm:pt-20 pb-24 bg-[#FFFFF]">
+<section class="pt-8 sm:pt-12 md:pt-16 pb-24 bg-[#FFFFF]">
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="px-4 sm:px-6 md:px-8 lg:px-12">
 
         <!-- Heading -->
         <div class="text-center mb-10 sm:mb-14 md:mb-16">
@@ -30,7 +30,7 @@
             <article class="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition duration-500 flex flex-col">
 
                 <!-- Image -->
-                <div class="h-[130px] sm:h-[150px] overflow-hidden">
+                <div class="h-[130px] sm:h-[160px] lg:h-[200px] overflow-hidden">
                     <img 
                         src="{{ asset('storage/' . $article->image) }}"
                         alt="{{ $article->title }}"
@@ -39,7 +39,7 @@
                 </div>
 
                 <!-- Content -->
-                <div class="p-3 sm:p-4 flex flex-col flex-1">
+                <div class="p-3 sm:p-4 lg:p-5 flex flex-col flex-1">
 
                     <div class="flex-1">
                         <h2 class="text-sm sm:text-base font-semibold text-primary mb-1.5 leading-snug line-clamp-2">

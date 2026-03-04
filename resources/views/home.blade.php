@@ -35,87 +35,128 @@
   <!-- ========================= -->
   <!-- MOBILE VERSION (≤735px) -->
   <!-- ========================= -->
-  <div class="block md:hidden hero-mobile relative w-full overflow-hidden">
+  <div class="block md:hidden relative w-full h-screen overflow-hidden">
 
-      <img
-          src="{{ asset('images/hero.png') }}"
-          alt="Cuilan Swargi"
-          class="absolute inset-0 w-full h-full object-cover"
-      >
+    <img
+        src="{{ asset('images/hero.png') }}"
+        alt="Cuilan Swargi"
+        class="absolute inset-0 w-full h-full object-cover"
+    >
 
-      <div class="absolute inset-0 bg-black/45"></div>
+    <!-- Overlay lebih ringan -->
+    <div class="absolute inset-0 bg-black/35"></div>
 
-      <div class="relative z-10 flex flex-col justify-center items-center text-center h-full px-6 text-white">
+    <div class="relative z-10 flex flex-col justify-center items-center text-center h-full px-6 text-white">
 
-          <h1 class="font-crimson text-4xl font-semibold leading-tight mb-4">
-              Cuilan Swargi
-          </h1>
+        <h1 class="font-crimson text-4xl font-semibold leading-tight mb-4">
+            Cuilan Swargi
+        </h1>
 
-          <p class="text-lg italic mb-3">
-              Be Present, Be Authentic, Live Slow
-          </p>
+        <p class="text-lg italic mb-3">
+            Be Present, Be Authentic, Live Slow
+        </p>
 
-          <p class="text-sm text-white/80 max-w-xs mb-8">
-              A peaceful sanctuary where nature and comfort meet.
-          </p>
+        <p class="text-sm text-white/80 max-w-xs mb-8">
+            A peaceful sanctuary where nature and comfort meet.
+        </p>
 
-          <a href="#penginapan"
-             class="px-8 py-3 rounded-full border border-white text-sm tracking-wide hover:bg-white hover:text-black transition duration-300">
-              Discover More
-          </a>
+        <a href="#penginapan"
+           class="px-8 py-3 rounded-full border border-white text-sm tracking-wide hover:bg-white hover:text-black transition duration-300">
+            Discover More
+        </a>
 
-      </div>
-
+    </div>
   </div>
 
-  <!-- ========================= -->
-  <!-- DESKTOP VERSION (≥736px) -->
-  <!-- ========================= -->
-  <div class="hidden md:block px-4 py-4 max-w-[1200px] mx-auto">
-    <div class="relative min-h-[650px] rounded-2xl overflow-hidden shadow-xl">
 
+  <!-- ========================= -->
+  <!-- DESKTOP VERSION -->
+  <!-- ========================= -->
+  <div class="hidden md:block mt-8 px-6 py-6 max-w-[1300px] mx-auto">
+    <div class="relative min-h-[750px] rounded-3xl overflow-hidden shadow-2xl">
+
+        <!-- Background -->
         <img
             src="{{ asset('images/hero.png') }}"
             alt="Cuilan Swargi"
-            class="absolute inset-0 w-full h-full object-cover"
+            class="absolute inset-0 w-full h-full object-cover scale-110 object-center"
         >
 
-        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/80"></div>
+        <!-- Overlay dibuat lebih soft -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/25 to-black/60"></div>
 
-        <div class="relative z-10 pt-24 px-12 text-white">
-            <h1 class="font-crimson text-5xl lg:text-6xl font-semibold mb-4">
+        <!-- Text -->
+        <div class="relative z-10 pt-32 px-16 text-[#FCF5C8]">
+            <h1 class="font-crimson text-7xl xl:text-8xl font-semibold mb-6">
                 Cuilan Swargi
             </h1>
 
-            <p class="text-2xl italic mb-2">
+            <p class="text-4xl italic mb-4 text-white">
                 Be Present, Be Authentic, Live Slow
             </p>
 
-            <p class="text-lg text-white/80">
+            <p class="text-2xl text-white/85">
                 A Tiny Piece of Heaven
             </p>
         </div>
 
-        <div class="absolute bottom-20 left-1/2 -translate-x-1/2 w-[90%] z-20">
-          <div class="grid md:grid-cols-3 gap-4">
+        <!-- Glass Cards (Versi Lebih Kecil & Proporsional) -->
+<div class="absolute bottom-20 left-1/2 -translate-x-1/2 w-[88%] z-20">
+  <div class="grid md:grid-cols-3 gap-6">
 
-            <div class="backdrop-blur-md bg-white/10 rounded-xl p-5 text-white border border-white/20">
-                <h3 class="text-base font-medium mb-2">Stay Experience</h3>
-                <p class="text-sm text-white/80">Cozy cabins surrounded by nature.</p>
-            </div>
+    <!-- Card 1 -->
+    <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-white border border-white/20">
 
-            <div class="backdrop-blur-md bg-white/10 rounded-xl p-5 text-white border border-white/20">
-                <h3 class="text-base font-medium mb-2">Food & Beverages</h3>
-                <p class="text-sm text-white/80">Natural food from fresh local ingredients.</p>
-            </div>
-
-            <div class="backdrop-blur-md bg-white/10 rounded-xl p-5 text-white border border-white/20">
-                <h3 class="text-base font-medium mb-2">Moments & Memories</h3>
-                <p class="text-sm text-white/80">Spend quality time with people you love.</p>
-            </div>
-
-          </div>
+        <div class="w-12 h-12 flex items-center justify-center rounded-lg border border-white/30 mb-4">
+            <!-- Home Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9l9-7 9 7v11a2 2 0 01-2 2h-4V12H9v9H5a2 2 0 01-2-2V9z"/>
+            </svg>
         </div>
+
+        <h3 class="text-xl font-medium mb-2">Stay Experience</h3>
+        <p class="text-sm text-white/80 leading-relaxed">
+            Enjoy cozy cabins surrounded by nature,
+            perfect for escaping the busy city life and relaxing.
+        </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-white border border-white/20">
+
+        <div class="w-12 h-12 flex items-center justify-center rounded-lg border border-white/30 mb-4">
+            <!-- Food Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 3v10M8 3v10M6 13v8m8-18v18m4-18v6a4 4 0 01-4 4"/>
+            </svg>
+        </div>
+
+        <h3 class="text-xl font-medium mb-2">Food & Beverages</h3>
+        <p class="text-sm text-white/80 leading-relaxed">
+            Healthy and natural food made from
+            fresh local ingredients.
+        </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-white border border-white/20">
+
+        <div class="w-12 h-12 flex items-center justify-center rounded-lg border border-white/30 mb-4">
+            <!-- Heart Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21 4.318 12.682a4.5 4.5 0 010-6.364z"/>
+            </svg>
+        </div>
+
+        <h3 class="text-xl font-medium mb-2">Moments & Memories</h3>
+        <p class="text-sm text-white/80 leading-relaxed">
+            Perfect place to spend quality time
+            with people you love.
+        </p>
+    </div>
+
+  </div>
+</div>
 
     </div>
   </div>
@@ -128,7 +169,8 @@
     FIX: Hilangkan negative margin (-mx-*) yang tidak konsisten di Safari.
     Ganti dengan pendekatan overflow-hidden pada wrapper + padding konsisten.
 --}}
-<section id="penginapan" class="py-6 sm:py-8 md:py-10 max-w-[1200px] mx-auto">
+<section id="penginapan" 
+         class="py-6 sm:py-8 md:py-10 w-full px-4 sm:px-6 md:px-8 lg:px-20">
 
     <!-- Header — padding konsisten kiri-kanan -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 sm:mb-8 px-4 sm:px-6 md:px-8">
@@ -355,7 +397,7 @@
     <div class="relative z-10 w-full max-w-6xl mx-auto">
 
         <div class="mb-8 sm:mb-10 md:mb-12">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-light tracking-wide">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-light">
                 How To Get To
             </h2>
             <h3 class="text-3xl sm:text-4xl md:text-5xl italic font-semibold mt-1.5 sm:mt-2 font-serif">
@@ -365,47 +407,61 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 md:gap-8">
 
-            <div class="backdrop-blur-xl bg-white/10 border border-white/30 rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 shadow-2xl">
-                <div class="flex items-center gap-4 sm:gap-5 mb-5 sm:mb-6">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-white/10 border border-white/30 flex items-center justify-center flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 sm:w-8 sm:h-8 text-white">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 16.5V7.5A3 3 0 017.5 4.5h9a3 3 0 013 3v9m-15 0h15m-15 0l-1.5 3m16.5-3l1.5 3M9 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm6 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                        </svg>
-                    </div>
-                    <h4 class="text-xl sm:text-2xl font-light">Train</h4>
-                </div>
-                <div class="space-y-2 sm:space-y-2.5 md:space-y-3 text-sm sm:text-base text-white/90 leading-relaxed">
-                    <p>YOGYAKARTA - PURWOKERTO (2 HOURS)</p>
-                    <p>YOGYAKARTA (LEMPUYANGAN) - PURWOKERTO (2.5 HOURS)</p>
-                    <p>SEMARANG (TAWANG) - PURWOKERTO (4 HOURS)</p>
-                    <p>SEMARANG (PONCOL) - PURWOKERTO (4 HOURS)</p>
-                    <p>JAKARTA (GAMBIR) - PURWOKERTO (5 HOURS)</p>
-                    <p>JAKARTA (PASAR SENEN) - PURWOKERTO (5.5 HOURS)</p>
-                    <p>SURABAYA (PASAR TURI) - PURWOKERTO (8 HOURS)</p>
-                    <p>SURABAYA (GUBENG) - PURWOKERTO (8 HOURS)</p>
-                    <p>BANDUNG (KIARA CONDONG) - PURWOKERTO (7 HOURS)</p>
-                </div>
+    <!-- TRAIN -->
+    <div class="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 shadow-xl">
+        <div class="flex items-center gap-4 mb-6">
+            
+            <!-- Background Icon -->
+            <div class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center 
+                        bg-white/10 backdrop-blur-md rounded-xl">
+                <img src="{{ asset('images/material-symbols-light_train-outline.svg') }}" 
+                     class="w-9 h-9 sm:w-10 sm:h-10 object-contain" 
+                     alt="Train">
             </div>
 
-            <div class="backdrop-blur-xl bg-white/10 border border-white/30 rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 shadow-2xl">
-                <div class="flex items-center gap-4 sm:gap-5 mb-5 sm:mb-6">
-                    <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-white/10 border border-white/30 flex items-center justify-center flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 sm:w-8 sm:h-8 text-white">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm7.5 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM3 8.25A2.25 2.25 0 015.25 6h13.5A2.25 2.25 0 0121 8.25v5.25A2.25 2.25 0 0118.75 15H5.25A2.25 2.25 0 013 13.5V8.25z" />
-                        </svg>
-                    </div>
-                    <h4 class="text-xl sm:text-2xl font-light">Bus</h4>
-                </div>
-                <div class="space-y-2 sm:space-y-2.5 md:space-y-3 text-sm sm:text-base text-white/90 leading-relaxed">
-                    <p>YOGYAKARTA - PURWOKERTO (6 HOURS)</p>
-                    <p>SEMARANG - PURWOKERTO (7 HOURS)</p>
-                    <p>JAKARTA - PURWOKERTO (7 HOURS)</p>
-                    <p>SURABAYA - PURWOKERTO (11 HOURS)</p>
-                    <p>BANDUNG - PURWOKERTO (8 HOURS)</p>
-                </div>
-            </div>
-
+            <h4 class="text-xl sm:text-2xl font-light">Train</h4>
         </div>
+
+        <div class="space-y-2 sm:space-y-2.5 md:space-y-3 text-sm sm:text-base text-white/90 leading-relaxed">
+            <p>YOGYAKARTA - PURWOKERTO (2 HOURS)</p>
+            <p>YOGYAKARTA (LEMPUYANGAN) - PURWOKERTO (2.5 HOURS)</p>
+            <p>SEMARANG (TAWANG) - PURWOKERTO (4 HOURS)</p>
+            <p>SEMARANG (PONCOL) - PURWOKERTO (4 HOURS)</p>
+            <p>JAKARTA (GAMBIR) - PURWOKERTO (5 HOURS)</p>
+            <p>JAKARTA (PASAR SENEN) - PURWOKERTO (5.5 HOURS)</p>
+            <p>SURABAYA (PASAR TURI) - PURWOKERTO (8 HOURS)</p>
+            <p>SURABAYA (GUBENG) - PURWOKERTO (8 HOURS)</p>
+            <p>BANDUNG (KIARA CONDONG) - PURWOKERTO (7 HOURS)</p>
+        </div>
+    </div>
+
+
+    <!-- BUS -->
+    <div class="backdrop-blur-md bg-white/5 border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 shadow-xl">
+        <div class="flex items-center gap-4 mb-6">
+            
+            <!-- Background Icon -->
+            <div class="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center 
+                        bg-white/10 backdrop-blur-md rounded-xl">
+                <!-- Lebih kecil dari train -->
+                <img src="{{ asset('images/ion_bus-outline.svg') }}" 
+                     class="w-6 h-6 sm:w-7 sm:h-7 object-contain" 
+                     alt="Bus">
+            </div>
+
+            <h4 class="text-xl sm:text-2xl font-light">Bus</h4>
+        </div>
+
+        <div class="space-y-2 sm:space-y-2.5 md:space-y-3 text-sm sm:text-base text-white/90 leading-relaxed">
+            <p>YOGYAKARTA - PURWOKERTO (6 HOURS)</p>
+            <p>SEMARANG - PURWOKERTO (7 HOURS)</p>
+            <p>JAKARTA - PURWOKERTO (7 HOURS)</p>
+            <p>SURABAYA - PURWOKERTO (11 HOURS)</p>
+            <p>BANDUNG - PURWOKERTO (8 HOURS)</p>
+        </div>
+    </div>
+
+</div>
     </div>
 </section>
 
