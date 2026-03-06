@@ -445,7 +445,7 @@
                 <li><a href="{{ route('articles') }}" class="{{ request()->routeIs('articles') ? 'active' : '' }}">Article</a></li>
             </ul>
             
-            <a href="{{ route('contact') }}" class="navbar-cta desktop">Contact Us</a>
+            <a href="https://wa.me/628112994568" class="navbar-cta desktop">Contact Us</a>
             
             <!-- Mobile Menu Button -->
             <button class="mobile-menu-button" id="mobile-menu-button" aria-label="Toggle menu">
