@@ -514,14 +514,14 @@
             </h2>
 
             <div class="flex gap-2.5 sm:gap-3">
-                <button id="prevBtn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition flex items-center justify-center flex-shrink-0">
-                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button id="prevBtn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition flex items-center justify-center">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                     </svg>
                 </button>
 
-                <button id="nextBtn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition flex items-center justify-center flex-shrink-0">
-                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button id="nextBtn" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition flex items-center justify-center">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                     </svg>
                 </button>
@@ -531,83 +531,91 @@
         <div class="overflow-hidden">
             <div id="ratingsSlider" class="flex gap-4 sm:gap-5 md:gap-6 transition-transform duration-500 ease-in-out">
 
-                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
-                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
+                <!-- Card 1 -->
+                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 flex flex-col">
+                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6">
                         "Such a peaceful and beautiful place. The view is absolutely breathtaking!"
                     </p>
-                    <div class="flex items-center gap-3 sm:gap-4">
-                        <img src="https://i.pravatar.cc/100?img=12" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover">
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary text-white flex items-center justify-center font-semibold">A</div>
                         <span class="text-sm sm:text-base text-primary font-medium">Andi Pratama</span>
                     </div>
                 </div>
 
-                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
-                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
+                <!-- Card 2 -->
+                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 flex flex-col">
+                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6">
                         "Cuilan Swargi is the perfect spot to relax and reconnect with nature."
                     </p>
-                    <div class="flex items-center gap-3 sm:gap-4">
-                        <img src="https://i.pravatar.cc/100?img=32" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover">
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary text-white flex items-center justify-center font-semibold">S</div>
                         <span class="text-sm sm:text-base text-primary font-medium">Siti Rahmawati</span>
                     </div>
                 </div>
 
-                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
-                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
+                <!-- Card 3 -->
+                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 flex flex-col">
+                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6">
                         "A hidden gem for anyone looking to escape the busy city life."
                     </p>
-                    <div class="flex items-center gap-3 sm:gap-4">
-                        <img src="https://i.pravatar.cc/100?img=45" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover">
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary text-white flex items-center justify-center font-semibold">R</div>
                         <span class="text-sm sm:text-base text-primary font-medium">Rizky Maulana</span>
                     </div>
                 </div>
 
-                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
-                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
+                <!-- Card 4 -->
+                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 flex flex-col">
+                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6">
                         "Every corner feels thoughtfully designed and full of warmth."
                     </p>
-                    <div class="flex items-center gap-3 sm:gap-4">
-                        <img src="https://i.pravatar.cc/100?img=22" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover">
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary text-white flex items-center justify-center font-semibold">D</div>
                         <span class="text-sm sm:text-base text-primary font-medium">Dewi Lestari</span>
                     </div>
                 </div>
 
-                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
-                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
+                <!-- Card 5 -->
+                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 flex flex-col">
+                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6">
                         "The atmosphere here is calm, refreshing, and truly unforgettable."
                     </p>
-                    <div class="flex items-center gap-3 sm:gap-4">
-                        <img src="https://i.pravatar.cc/100?img=51" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover">
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary text-white flex items-center justify-center font-semibold">B</div>
                         <span class="text-sm sm:text-base text-primary font-medium">Budi Santoso</span>
                     </div>
                 </div>
 
-                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
-                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
+                <!-- Card 6 -->
+                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 flex flex-col">
+                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6">
                         "It feels like a private paradise surrounded by nature."
                     </p>
-                    <div class="flex items-center gap-3 sm:gap-4">
-                        <img src="https://i.pravatar.cc/100?img=60" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover">
-                        <span class="text-sm sm:text-base text-primary font-medium">Kevin Alexander</span>
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary text-white flex items-center justify-center font-semibold">K</div>
+                        <span class="text-sm sm:text-base text-primary font-medium">Davin Maulana</span>
                     </div>
                 </div>
 
-                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
-                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
+                <!-- Card 7 -->
+                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 flex flex-col">
+                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6">
                         "Highly recommended for families and couples who love serenity."
                     </p>
-                    <div class="flex items-center gap-3 sm:gap-4">
-                        <img src="https://i.pravatar.cc/100?img=65" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover">
-                        <span class="text-sm sm:text-base text-primary font-medium">Jonathan William</span>
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary text-white flex items-center justify-center font-semibold">J</div>
+                        <span class="text-sm sm:text-base text-primary font-medium">Jonathan Lee</span>
                     </div>
                 </div>
 
-                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8">
-                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6 sm:mb-7 md:mb-8">
+                <!-- Card 8 -->
+                <div class="rating-card min-w-full md:min-w-[calc(50%-12px)] bg-[#F5F5F5] rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 flex flex-col">
+                    <p class="text-lg sm:text-xl md:text-2xl text-primary leading-relaxed mb-6">
                         "The service was excellent and the environment felt very exclusive."
                     </p>
-                    <div class="flex items-center gap-3 sm:gap-4">
-                        <img src="https://i.pravatar.cc/100?img=70" class="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover">
-                        <span class="text-sm sm:text-base text-primary font-medium">Steven Tan</span>
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-primary text-white flex items-center justify-center font-semibold">S</div>
+                        <span class="text-sm sm:text-base text-primary font-medium">Sarah Amelia</span>
                     </div>
                 </div>
 

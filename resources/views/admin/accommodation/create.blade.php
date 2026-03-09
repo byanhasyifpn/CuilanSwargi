@@ -54,10 +54,14 @@
                        class="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:border-primary @error('images.*') border-red-500 @enderror"
                        onchange="previewImages(event)"
                        required>
+
                 @error('images.*')
                     <p class="text-red-500 text-xs sm:text-sm mt-1">{{ $message }}</p>
                 @enderror
-                <p class="text-gray-500 text-xs sm:text-sm mt-1">Pilih beberapa gambar. Format: JPG, PNG, GIF. Maksimal 2MB per gambar</p>
+
+                <p class="text-gray-500 text-xs sm:text-sm mt-1">
+                    Pilih beberapa gambar. Format: JPG, PNG, GIF. Maksimal 2MB per gambar
+                </p>
 
                 <div id="preview" class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
             </div>
@@ -91,27 +95,78 @@
 </div>
 
 <script>
-    function previewImages(event) {
-        const preview = document.getElementById('preview');
-        preview.innerHTML = '';
-        const files = event.target.files;
-        
-        for (let i = 0; i < files.length; i++) {
-            const file = files[i];
-            const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.className = 'w-full h-28 sm:h-32 object-cover rounded-lg';
-                preview.appendChild(img);
-            }
-            
-            reader.readAsDataURL(file);
+
+let selectedFiles = [];
+
+function previewImages(event) {
+
+    const input = event.target;
+    const preview = document.getElementById('preview');
+
+    for (let i = 0; i < input.files.length; i++) {
+        const file = input.files[i];
+
+        selectedFiles.push(file);
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            const wrapper = document.createElement('div');
+            wrapper.className = "relative";
+
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.className = 'w-full h-28 sm:h-32 object-cover rounded-lg';
+
+            const removeBtn = document.createElement('button');
+            removeBtn.innerHTML = "✕";
+            removeBtn.type = "button";
+            removeBtn.className = "absolute top-1 right-1 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center hover:bg-red-600";
+
+            const index = selectedFiles.length - 1;
+
+            removeBtn.onclick = function() {
+                removeImage(wrapper, index);
+            };
+
+            wrapper.appendChild(img);
+            wrapper.appendChild(removeBtn);
+
+            preview.appendChild(wrapper);
         }
+
+        reader.readAsDataURL(file);
     }
 
-    let serviceIndex = 0;
+    updateInputFiles();
+}
+
+
+function removeImage(wrapper, index) {
+
+    selectedFiles.splice(index, 1);
+
+    wrapper.remove();
+
+    updateInputFiles();
+}
+
+
+function updateInputFiles() {
+
+    const input = document.getElementById('images');
+
+    const dataTransfer = new DataTransfer();
+
+    selectedFiles.forEach(file => {
+        dataTransfer.items.add(file);
+    });
+
+    input.files = dataTransfer.files;
+}
+
+let serviceIndex = 0;
 
 function addService() {
     const wrapper = document.getElementById('services-wrapper');
@@ -144,11 +199,11 @@ function addService() {
             </div>
 
             <div>
-                <label class="block font-semibold mb-1 text-sm">Fasilitas</label>
+                <label class="block font-semibold mb-1 text-sm">Fasilitas (Pisahkan dengan koma)</label>
                 <textarea name="services[${serviceIndex}][facilities]"
                           rows="3"
                           class="w-full border px-3 py-2 rounded text-sm"
-                          placeholder="Pisahkan dengan koma"
+                          placeholder="Contoh: Sarapan, Trekking, Api Unggun"
                           required></textarea>
             </div>
         </div>

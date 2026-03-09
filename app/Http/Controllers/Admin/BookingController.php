@@ -10,12 +10,21 @@ use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
-    public function index()
-    {
-        $bookings = Booking::latest()->paginate(15);
+    public function index(Request $request)
+{
+    $query = Booking::query();
 
-        return view('admin.booking.index', compact('bookings'));
+    if ($request->search) {
+        $query->where(function ($q) use ($request) {
+            $q->where('order_code', 'like', '%' . $request->search . '%')
+              ->orWhere('name', 'like', '%' . $request->search . '%');
+        });
     }
+
+    $bookings = $query->latest()->paginate(10)->withQueryString();
+
+    return view('admin.booking.index', compact('bookings'));
+}
 
     public function show(Booking $booking)
     {

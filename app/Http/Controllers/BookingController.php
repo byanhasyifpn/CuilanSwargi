@@ -25,6 +25,7 @@ class BookingController extends Controller
             'email'      => 'required|email|max:255',
             'service_id' => 'required|exists:accommodation_services,id',
             'check_in'   => 'required|date|after_or_equal:today',
+            'check_out'  => 'required|date|after:check_in',
             'notes'      => 'nullable|string|max:1000',
         ], [
             'name.required'           => 'Nama lengkap wajib diisi.',
@@ -36,6 +37,9 @@ class BookingController extends Controller
             'check_in.required'       => 'Tanggal check-in wajib dipilih.',
             'check_in.date'           => 'Format tanggal tidak valid.',
             'check_in.after_or_equal' => 'Tanggal check-in tidak boleh sebelum hari ini.',
+            'check_out.required'      => 'Tanggal check-out wajib dipilih.',
+            'check_out.date'          => 'Format tanggal tidak valid.',
+            'check_out.after'         => 'Tanggal check-out harus setelah tanggal check-in.',
         ]);
 
         // Generate order code: CS-DDMMYY-XXXX
@@ -56,6 +60,7 @@ class BookingController extends Controller
             'service_id'   => $request->service_id,
             'service_name' => $serviceName,
             'check_in'     => $request->check_in,
+            'check_out'    => $request->check_out,
             'notes'        => $request->notes,
             'status'       => 'pending',
         ]);

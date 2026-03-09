@@ -14,13 +14,15 @@ class Booking extends Model
         'service_id',
         'service_name',
         'check_in',
+        'check_out',
         'notes',
         'status',
     ];
 
     protected $casts = [
-        'status'   => 'string',
-        'check_in' => 'date',
+        'status'    => 'string',
+        'check_in'  => 'date',
+        'check_out' => 'date',
     ];
 
     public function service()

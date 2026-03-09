@@ -8,7 +8,9 @@
     $checkInDisplay = $booking->check_in
         ? $booking->check_in->translatedFormat('d F Y')
         : '-';
-
+    $checkOutDisplay = $booking->check_out
+        ? $booking->check_out->translatedFormat('d F Y')
+        : '-';
     $waMessage = "Halo Admin, saya ingin melakukan booking.\n\n"
         . "Kode Pesanan : {$booking->order_code}\n"
         . "Nama         : {$booking->name}\n"
@@ -16,6 +18,7 @@
         . "Email        : {$booking->email}\n"
         . "Service      : {$booking->service_name}\n"
         . "Check-in     : {$checkInDisplay}\n"
+        . "Check-out    : {$checkOutDisplay}\n"
         . "Catatan      : " . ($booking->notes ?: '-') . "\n\n"
         . "Mohon konfirmasi untuk pembayaran.";
 
@@ -324,6 +327,19 @@
                     <div class="flex-1 min-w-0">
                         <p class="text-xs text-gray-400 mb-0.5">Tanggal Check-in</p>
                         <p class="text-sm font-semibold text-gray-800">{{ $checkInDisplay }}</p>
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <div class="detail-icon">
+                        <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+
+                    <div class="flex-1 min-w-0">
+                        <p class="text-xs text-gray-400 mb-0.5">Tanggal Check-out</p>
+                        <p class="text-sm font-semibold text-gray-800">{{ $checkOutDisplay }}</p>
                     </div>
                 </div>
                 <div class="detail-row">

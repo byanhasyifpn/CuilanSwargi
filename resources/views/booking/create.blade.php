@@ -222,7 +222,7 @@
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
         </svg>
-        Kembali ke Beranda
+        Back to lodging
     </a>
 
     <div class="grid lg:grid-cols-3 gap-6 lg:gap-8 items-start">
@@ -234,14 +234,14 @@
                     <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                     </svg>
-                    Reservasi Aman
+                    Secure Reservation
                 </div>
 
                 <h2 class="text-xl font-semibold text-white mb-1" style="font-family:'Crimson Text',serif;">
-                    Mudah & Cepat
+                    Easy & Fast Booking
                 </h2>
                 <p class="text-white/60 text-sm leading-relaxed mb-6">
-                    Proses booking via WhatsApp langsung dikonfirmasi admin.
+                    Booking process via WhatsApp will be confirmed directly by the admin.
                 </p>
 
                 <div class="side-feature">
@@ -251,8 +251,8 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="text-white text-sm font-medium">Pilih Tanggal Bebas</p>
-                        <p class="text-white/50 text-xs mt-0.5">Tentukan tanggal check-in sesuai keinginan</p>
+                        <p class="text-white text-sm font-medium">Choose Your Date</p>
+                        <p class="text-white/50 text-xs mt-0.5">Determine your check-in date as you wish</p>
                     </div>
                 </div>
 
@@ -263,8 +263,8 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="text-white text-sm font-medium">Kode Pesanan Unik</p>
-                        <p class="text-white/50 text-xs mt-0.5">Format CS-DDMMYY-XXXX sebagai bukti reservasi</p>
+                        <p class="text-white text-sm font-medium">Unique Reservation Code</p>
+                        <p class="text-white/50 text-xs mt-0.5">Format CS-DDMMYY-XXXX as proof of reservation</p>
                     </div>
                 </div>
 
@@ -275,8 +275,8 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="text-white text-sm font-medium">Konfirmasi via WhatsApp</p>
-                        <p class="text-white/50 text-xs mt-0.5">Admin langsung merespons pembayaran Anda</p>
+                        <p class="text-white text-sm font-medium">WhatsApp Confirmation</p>
+                        <p class="text-white/50 text-xs mt-0.5">Admin will respond directly to your payment</p>
                     </div>
                 </div>
 
@@ -302,30 +302,30 @@
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                             </svg>
-                            Form Reservasi
+                            Reservation Form
                         </div>
                         <h1 class="text-white text-3xl font-semibold mb-1" style="font-family:'Crimson Text',serif;">
                             Booking via WhatsApp
                         </h1>
                         <p class="text-white/65 text-sm">
-                            Isi data di bawah → dapatkan kode pesanan → konfirmasi ke admin
+                            Fill in the data below → get an order code → confirm with admin
                         </p>
 
                         {{-- Progress steps --}}
                         <div class="steps mt-5">
                             <div class="step-item">
                                 <div class="step-dot active">1</div>
-                                <span class="step-label active">Isi Form</span>
+                                <span class="step-label active">Fill Form</span>
                             </div>
                             <div class="step-line"></div>
                             <div class="step-item">
                                 <div class="step-dot inactive">2</div>
-                                <span class="step-label inactive">Kode Pesanan</span>
+                                <span class="step-label inactive">Order Code</span>
                             </div>
                             <div class="step-line"></div>
                             <div class="step-item">
                                 <div class="step-dot inactive">3</div>
-                                <span class="step-label inactive">Konfirmasi WA</span>
+                                <span class="step-label inactive">WhatsApp Confirmation</span>
                             </div>
                         </div>
                     </div>
@@ -341,7 +341,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                         <div>
-                            <p class="text-red-700 font-semibold text-sm mb-1">Mohon periksa kembali:</p>
+                            <p class="text-red-700 font-semibold text-sm mb-1">Please check again:</p>
                             <ul class="list-disc list-inside space-y-0.5">
                                 @foreach ($errors->all() as $error)
                                     <li class="text-red-600 text-xs">{{ $error }}</li>
@@ -361,10 +361,10 @@
                                     <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                                     </svg>
-                                    Nama Lengkap <span class="req">*</span>
+                                    Full Name <span class="req">*</span>
                                 </label>
                                 <input type="text" id="name" name="name" value="{{ old('name') }}"
-                                       placeholder="Nama lengkap Anda"
+                                       placeholder="Your full name"
                                        class="form-input {{ $errors->has('name') ? 'is-error' : '' }}">
                                 @error('name')
                                     <p class="field-error">
@@ -379,7 +379,7 @@
                                     <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
                                     </svg>
-                                    No. Telepon <span class="req">*</span>
+                                    Phone Number <span class="req">*</span>
                                 </label>
                                 <input type="tel" id="phone" name="phone" value="{{ old('phone') }}"
                                        placeholder="08xxxxxxxxxx"
@@ -412,59 +412,112 @@
                             @enderror
                         </div>
 
-                        {{-- Row: Service + Check-in --}}
-                        <div class="grid sm:grid-cols-2 gap-4 mb-1">
+                        {{-- Row: Service + Check-in + Check-out --}}
+                        <div class="grid md:grid-cols-3 gap-5 mb-1">
+
+                            {{-- SERVICE --}}
                             <div class="form-group">
                                 <label class="form-label" for="service_id">
                                     <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                                     </svg>
-                                    Pilih Service <span class="req">*</span>
+                                    Choose Service <span class="req">*</span>
                                 </label>
+
                                 <select id="service_id" name="service_id"
-                                        class="form-input {{ $errors->has('service_id') ? 'is-error' : '' }}">
-                                    <option value="">— Pilih paket —</option>
+                                class="form-input h-14 {{ $errors->has('service_id') ? 'is-error' : '' }}">
+
+                                    <option value="">— Choose package —</option>
+
                                     @foreach($services as $service)
-                                        <option value="{{ $service->id }}"
-                                                {{ old('service_id') == $service->id ? 'selected' : '' }}>
-                                            {{ $service->accommodation->name ?? '' }} — {{ $service->name }}
-                                            (IDR {{ number_format($service->price, 0, ',', '.') }})
-                                        </option>
+                                    <option value="{{ $service->id }}"
+                                    {{ old('service_id') == $service->id ? 'selected' : '' }}>
+
+                                    {{ $service->accommodation->name ?? '' }} — {{ $service->name }}
+                                    (IDR {{ number_format($service->price, 0, ',', '.') }})
+
+                                    </option>
                                     @endforeach
+
                                 </select>
+
                                 @error('service_id')
-                                    <p class="field-error">
-                                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
-                                        {{ $message }}
-                                    </p>
+                                <p class="field-error">
+                                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                        clip-rule="evenodd"/>
+                                    </svg>
+                                    {{ $message }}
+                                </p>
                                 @enderror
                             </div>
 
-                            {{-- DATE PICKER --}}
+
+                            {{-- CHECK IN --}}
                             <div class="form-group">
                                 <label class="form-label" for="check_in">
                                     <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                                     </svg>
-                                    Tanggal Check-in <span class="req">*</span>
+                                    Check-in <span class="req">*</span>
                                 </label>
+
                                 <div class="date-picker-wrapper">
-                                    <input type="date" id="check_in" name="check_in"
-                                           value="{{ old('check_in') }}"
-                                           min="{{ $today }}"
-                                           max="{{ $maxDate }}"
-                                           class="form-input {{ $errors->has('check_in') ? 'is-error' : '' }}">
+                                    <input type="date"
+                                    id="check_in"
+                                    name="check_in"
+                                    value="{{ old('check_in') }}"
+                                    min="{{ $today }}"
+                                    max="{{ $maxDate }}"
+                                    class="form-input h-14 {{ $errors->has('check_in') ? 'is-error' : '' }}">
+
                                     <svg class="cal-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                                     </svg>
                                 </div>
+
                                 @error('check_in')
-                                    <p class="field-error">
-                                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
-                                        {{ $message }}
-                                    </p>
+                                <p class="field-error">
+                                    {{ $message }}
+                                </p>
                                 @enderror
                             </div>
+
+
+                            {{-- CHECK OUT --}}
+                            <div class="form-group">
+                                <label class="form-label" for="check_out">
+                                    <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                    Check-out <span class="req">*</span>
+                                </label>
+
+                                <div class="date-picker-wrapper">
+                                    <input type="date"
+                                    id="check_out"
+                                    name="check_out"
+                                    value="{{ old('check_out') }}"
+                                    class="form-input h-14 {{ $errors->has('check_out') ? 'is-error' : '' }}">
+
+                                    <svg class="cal-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+
+                                @error('check_out')
+                                <p class="field-error">
+                                    {{ $message }}
+                                </p>
+                                @enderror
+                            </div>
+
                         </div>
 
                         {{-- Catatan --}}
@@ -473,11 +526,11 @@
                                 <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
                                 </svg>
-                                Catatan
-                                <span class="ml-0.5 text-gray-400 font-normal normal-case" style="font-size:0.72rem;letter-spacing:0;">(opsional)</span>
+                                Notes
+                                <span class="ml-0.5 text-gray-400 font-normal normal-case" style="font-size:0.72rem;letter-spacing:0;">(optional)</span>
                             </label>
                             <textarea id="notes" name="notes" rows="3"
-                                      placeholder="Contoh: permintaan khusus, preferensi kamar, dll."
+                                      placeholder="Example: special requests, room preferences, etc."
                                       class="form-input resize-none">{{ old('notes') }}</textarea>
                         </div>
 
@@ -487,8 +540,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                             </svg>
                             <p class="text-xs text-primary/70 leading-relaxed">
-                                Setelah submit, Anda akan mendapatkan <strong class="text-primary">kode pesanan unik</strong> dan 
-                                diarahkan ke WhatsApp admin untuk konfirmasi pembayaran.
+                                After submitting, you will receive a <strong class="text-primary">unique order code</strong> and 
+                                be directed to admin WhatsApp for payment confirmation.
                             </p>
                         </div>
 
@@ -497,7 +550,7 @@
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                             </svg>
-                            Kirim Booking
+                            Submit Booking
                         </button>
 
                     </form>
@@ -510,3 +563,39 @@
 </div>
 
 @endsection
+
+<script>
+
+const service = document.getElementById('service_id');
+const checkIn = document.getElementById('check_in');
+const checkOut = document.getElementById('check_out');
+
+function formatRupiah(num){
+    return "IDR " + num.toLocaleString("id-ID");
+}
+
+function updatePrice(){
+
+    if(!service.value || !checkIn.value || !checkOut.value){
+        return;
+    }
+
+    const price = parseInt(service.selectedOptions[0].dataset.price);
+
+    const start = new Date(checkIn.value);
+    const end = new Date(checkOut.value);
+
+    const nights = (end - start) / (1000 * 60 * 60 * 24);
+
+    if(nights <= 0){
+        return;
+    }
+
+    const total = price * nights;
+}
+
+service.addEventListener("change", updatePrice);
+checkIn.addEventListener("input", updatePrice);
+checkOut.addEventListener("input", updatePrice);
+
+</script>

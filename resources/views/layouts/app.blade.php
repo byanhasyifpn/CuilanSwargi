@@ -445,7 +445,7 @@
                 <li><a href="{{ route('articles') }}" class="{{ request()->routeIs('articles') ? 'active' : '' }}">Article</a></li>
             </ul>
             
-            <a href="https://wa.me/628112994568" class="navbar-cta desktop">Contact Us</a>
+            <a href="https://wa.me/6285797104868" class="navbar-cta desktop">Contact Us</a>
             
             <!-- Mobile Menu Button -->
             <button class="mobile-menu-button" id="mobile-menu-button" aria-label="Toggle menu">
@@ -463,7 +463,7 @@
                 <li><a href="{{ route('accommodation') }}" class="{{ request()->routeIs('accommodation') ? 'active' : '' }}">Lodging</a></li>
                 <li><a href="{{ route('articles') }}" class="{{ request()->routeIs('articles') ? 'active' : '' }}">Article</a></li>
             </ul>
-            <a href="{{ route('contact') }}" class="navbar-cta">Contact Us</a>
+            <a href="https://wa.me/6285797104868" class="navbar-cta">Contact Us</a>
         </div>
     </nav>
     
@@ -518,8 +518,7 @@
                         <h4>Contact us</h4>
                         <ul>
                             <li><a href="https://www.instagram.com/cuilanswargi" target="_blank">Instagram</a></li>
-                            <li><a href="mailto:info@cuilanswargi.com">Email</a></li>
-                            <li><a href="https://wa.me/6281234567890" target="_blank">Whatsapp</a></li>
+                            <li><a href="https://wa.me/6285797104868" target="_blank">Whatsapp</a></li>
                         </ul>
                     </div>
 

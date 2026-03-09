@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('email');
             $table->unsignedBigInteger('service_id')->nullable();
             $table->string('service_name'); // snapshot name
+            $table->date('check_in');
+            $table->date('check_out');
             $table->text('notes')->nullable();
             $table->enum('status', ['pending', 'paid', 'completed'])->default('pending');
             $table->timestamps();

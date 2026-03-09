@@ -64,16 +64,40 @@
 {{-- ── Table Card ── --}}
 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
 
-    <div class="flex items-center justify-between px-5 sm:px-6 py-4 border-b border-gray-100">
-        <div>
-            <h3 class="text-base sm:text-lg font-semibold text-gray-800">Daftar Reservasi</h3>
-            <p class="text-xs text-gray-400 mt-0.5">{{ $total }} total booking</p>
-        </div>
-        <div class="flex items-center gap-2">
-            <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-            <span class="text-xs text-gray-400">Live</span>
-        </div>
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-5 sm:px-6 py-4 border-b border-gray-100">
+
+    <div>
+        <h3 class="text-base sm:text-lg font-semibold text-gray-800">Daftar Reservasi</h3>
+        <p class="text-xs text-gray-400 mt-0.5">{{ $total }} total booking</p>
     </div>
+
+    <form method="GET" class="flex items-center gap-2">
+
+        <div class="relative">
+            <input
+                type="text"
+                name="search"
+                value="{{ request('search') }}"
+                placeholder="Cari kode atau nama..."
+                class="w-56 text-sm border border-gray-200 rounded-xl px-3 py-2
+                       focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10"
+            >
+
+            <svg class="w-4 h-4 text-gray-400 absolute right-3 top-2.5"
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-4.35-4.35m1.85-5.65a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z"/>
+            </svg>
+        </div>
+
+        <button
+            class="bg-primary text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-primary/90 transition">
+            Cari
+        </button>
+
+    </form>
+</div>
 
     <div class="overflow-x-auto">
         <table class="w-full text-sm">
@@ -83,7 +107,7 @@
                     <th class="text-left px-5 sm:px-6 py-3.5 whitespace-nowrap">Nama</th>
                     <th class="text-left px-5 sm:px-6 py-3.5 whitespace-nowrap hidden sm:table-cell">Telepon</th>
                     <th class="text-left px-5 sm:px-6 py-3.5 whitespace-nowrap hidden lg:table-cell">Service</th>
-                    <th class="text-left px-5 sm:px-6 py-3.5 whitespace-nowrap hidden md:table-cell">Check-in</th>
+                    <th class="text-left px-5 sm:px-6 py-3.5 whitespace-nowrap hidden md:table-cell">Tanggal Menginap</th>
                     <th class="text-left px-5 sm:px-6 py-3.5 whitespace-nowrap">Status</th>
                     <th class="text-left px-5 sm:px-6 py-3.5 whitespace-nowrap">Ubah Status</th>
                     <th class="text-left px-5 sm:px-6 py-3.5 whitespace-nowrap">Aksi</th>
@@ -121,14 +145,21 @@
                     {{-- Check-in --}}
                     <td class="px-5 sm:px-6 py-4 whitespace-nowrap hidden md:table-cell">
                         @if($booking->check_in)
-                            <div class="flex items-center gap-1.5 text-gray-700">
-                                <svg class="w-3.5 h-3.5 text-primary/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                </svg>
-                                <span class="text-sm font-medium">{{ $booking->check_in->format('d M Y') }}</span>
+                        <div class="flex flex-col text-gray-700 text-xs leading-tight">
+                            <div class="flex items-center gap-1">
+                                <span class="font-semibold">IN</span>
+                                <span>{{ $booking->check_in->format('d M Y') }}</span>
                             </div>
+
+                            @if($booking->check_out)
+                            <div class="flex items-center gap-1 text-gray-500">
+                                <span class="font-semibold">OUT</span>
+                                <span>{{ $booking->check_out->format('d M Y') }}</span>
+                            </div>
+                            @endif
+                        </div>
                         @else
-                            <span class="text-gray-400 text-xs">—</span>
+                        <span class="text-gray-400 text-xs">—</span>
                         @endif
                     </td>
 
