@@ -67,10 +67,11 @@
 
                         <div class="mb-3">
                             <label class="block font-semibold mb-1 text-sm">Harga</label>
-                            <input type="number"
+                            <input type="text"
                                    name="services[{{ $index }}][price]"
-                                   value="{{ $service->price }}"
+                                   value="{{ number_format($service->price, 0, ',', '.') }}"
                                    class="w-full border px-3 py-2 rounded text-sm"
+                                   oninput="formatPrice(this)"
                                    required>
                         </div>
 
@@ -97,7 +98,7 @@
                 <label class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">Gambar Saat Ini</label>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
                     @foreach($accommodation->images as $image)
-                        <div class="relative">
+                        <div id="image-{{ $image->id }}" class="relative">
                             <img src="{{ asset('storage/' . $image->image) }}" 
                                  alt="Image" 
                                  class="w-full h-28 sm:h-32 object-cover rounded-lg">
@@ -156,11 +157,27 @@
 </div>
 
 <script>
+
+function formatPrice(input) {
+    let value = input.value.replace(/\D/g, '');
+    value = new Intl.NumberFormat('id-ID').format(value);
+    input.value = value;
+}
+
 function deleteImage(id) {
     if (confirm('Yakin ingin menghapus gambar ini?')) {
-        const form = document.getElementById('delete-image-form');
-        form.action = '/admin/accommodation-image/' + id;
-        form.submit();
+        fetch('/admin/accommodation-image/' + id, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('image-' + id).remove();
+        })
+        .catch(error => console.error(error));
     }
 }
 
@@ -208,9 +225,10 @@ function addService() {
 
             <div class="mb-3">
                 <label class="block font-semibold mb-1 text-sm">Harga</label>
-                <input type="number"
+                <input type="text"
                        name="services[${serviceIndex}][price]"
                        class="w-full border px-3 py-2 rounded text-sm"
+                       oninput="formatPrice(this)"
                        required>
             </div>
 

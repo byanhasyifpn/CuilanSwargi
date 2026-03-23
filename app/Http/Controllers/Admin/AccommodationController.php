@@ -26,7 +26,7 @@ class AccommodationController extends Controller
     }
 
     public function store(Request $request)
-{
+    {
     $request->validate([
         'name' => 'required|string|max:255',
         'capacity' => 'required|integer|min:1',
@@ -34,7 +34,7 @@ class AccommodationController extends Controller
 
         'services' => 'required|array|min:1',
         'services.*.name' => 'required|string|max:255',
-        'services.*.price' => 'required|integer|min:0',
+        'services.*.price' => 'required|string',
         'services.*.facilities' => 'required|string',
     ]);
 
@@ -57,10 +57,12 @@ class AccommodationController extends Controller
         }
 
         foreach ($request->services as $service) {
+            $price = preg_replace('/\D/', '', $service['price']);
+
             AccommodationService::create([
                 'accommodation_id' => $accommodation->id,
                 'name' => $service['name'],
-                'price' => $service['price'],
+                'price' => $price,
                 'facilities' => $service['facilities'],
             ]);
         }
@@ -76,7 +78,7 @@ class AccommodationController extends Controller
 
     public function edit(Accommodation $accommodation)
     {
-        $accommodation->load('images');
+        $accommodation->load('images', 'services');
         return view('admin.accommodation.edit', compact('accommodation'));
     }
 
@@ -88,40 +90,41 @@ class AccommodationController extends Controller
         'images.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
 
         'services.*.name' => 'required|string|max:255',
-        'services.*.price' => 'required|integer|min:0',
+        'services.*.price' => 'required|string',
         'services.*.facilities' => 'required|string',
     ]);
 
     \DB::transaction(function () use ($request, $accommodation) {
 
-        $accommodation->update([
-            'name' => $request->name,
-            'capacity' => $request->capacity,
-        ]);
+    $accommodation->update([
+        'name' => $request->name,
+        'capacity' => $request->capacity,
+    ]);
 
-        // Hapus semua service lama
-        $accommodation->services()->delete();
+    $accommodation->services()->delete();
 
-        // Simpan ulang service
+    if ($request->has('services')) {
         foreach ($request->services as $service) {
+            $price = preg_replace('/\D/', '', $service['price']);
+
             $accommodation->services()->create([
                 'name' => $service['name'],
-                'price' => $service['price'],
+                'price' => $price,
                 'facilities' => $service['facilities'],
             ]);
         }
+    }
 
-        // Upload gambar baru jika ada
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $imagePath = $image->store('accommodations', 'public');
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images') as $image) {
+            $imagePath = $image->store('accommodations', 'public');
 
-                $accommodation->images()->create([
-                    'image' => $imagePath,
-                ]);
-            }
+            $accommodation->images()->create([
+                'image' => $imagePath,
+            ]);
         }
-    });
+    }
+});
 
     return redirect()->route('admin.accommodation.index')
         ->with('success', 'Penginapan berhasil diperbarui!');
@@ -136,6 +139,8 @@ class AccommodationController extends Controller
             Storage::disk('public')->delete($image->image);
         }
 
+        $accommodation->services()->delete();
+        $accommodation->images()->delete();
         $accommodation->delete();
 
         return redirect()->route('admin.accommodation.index')
@@ -154,7 +159,9 @@ class AccommodationController extends Controller
 
         $image->delete();
 
-        return back()->with('success', 'Gambar berhasil dihapus!');
+        return response()->json([
+            'success' => true
+        ]);
     }
     
 

@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('accommodation_id')->constrained()->onDelete('cascade');
             $table->string('name'); // contoh: Room Only
             $table->integer('price');
-            $table->text('facilities');
             $table->timestamps();
         });
 

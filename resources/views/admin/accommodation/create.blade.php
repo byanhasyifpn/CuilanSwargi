@@ -96,7 +96,18 @@
 
 <script>
 
+    
+
 let selectedFiles = [];
+
+function formatPrice(input) {
+
+    let value = input.value.replace(/\D/g, '');
+
+    value = new Intl.NumberFormat('id-ID').format(value);
+
+    input.value = value;
+}
 
 function previewImages(event) {
 
@@ -191,11 +202,12 @@ function addService() {
 
             <div class="mb-3">
                 <label class="block font-semibold mb-1 text-sm">Harga</label>
-                <input type="number"
-                       name="services[${serviceIndex}][price]"
-                       class="w-full border px-3 py-2 rounded text-sm"
-                       placeholder="Contoh: 975000"
-                       required>
+                <input type="text"
+                    name="services[${serviceIndex}][price]"
+                    class="w-full border px-3 py-2 rounded text-sm price-input"
+                    placeholder="Contoh: 975.000"
+                    oninput="formatPrice(this)"
+                    required>
             </div>
 
             <div>

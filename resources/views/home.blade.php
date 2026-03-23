@@ -243,8 +243,8 @@
                         @endif
                     </p>
 
-                    <a href="{{ route('accommodation') }}"
-                       class="inline-block w-full text-center text-xs sm:text-sm border border-white/40 py-1.5 sm:py-2 rounded-full hover:bg-white hover:text-primary transition">
+                    <a href="{{ route('accommodation.detail', $item->id) }}"
+                    class="inline-block w-full text-center text-xs sm:text-sm border border-white/40 py-1.5 sm:py-2 rounded-full hover:bg-white hover:text-primary transition">
                         View Details
                     </a>
                 </div>

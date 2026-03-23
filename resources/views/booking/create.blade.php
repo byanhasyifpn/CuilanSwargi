@@ -428,7 +428,7 @@
                                 <select id="service_id" name="service_id"
                                 class="form-input h-14 {{ $errors->has('service_id') ? 'is-error' : '' }}">
 
-                                    <option value="">— Choose package —</option>
+                                    <option value="">— Choose service —</option>
 
                                     @foreach($services as $service)
                                     <option value="{{ $service->id }}"

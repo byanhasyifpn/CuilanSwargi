@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class AccommodationService extends Model
 {
     protected $fillable = [
-        'accommodation_id',
-        'name',
-        'price',
-        'facilities',
+    'accommodation_id',
+    'name',
+    'price',
+    'facilities',
     ];
 
     public function accommodation()
@@ -20,6 +20,6 @@ class AccommodationService extends Model
 
     public function getFacilitiesArrayAttribute()
     {
-        return explode(',', $this->facilities);
+        return $this->facilities ? explode(',', $this->facilities) : [];
     }
 }

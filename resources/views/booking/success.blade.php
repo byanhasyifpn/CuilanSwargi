@@ -22,7 +22,7 @@
         . "Catatan      : " . ($booking->notes ?: '-') . "\n\n"
         . "Mohon konfirmasi untuk pembayaran.";
 
-    $waUrl = "https://wa.me/6282322785270?text=" . urlencode($waMessage);
+    $waUrl = "https://wa.me/6285797104868?text=" . urlencode($waMessage);
 @endphp
 
 <style>
