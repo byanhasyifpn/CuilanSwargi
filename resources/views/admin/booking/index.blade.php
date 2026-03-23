@@ -72,6 +72,9 @@
     </div>
 
     <form method="GET" class="flex items-center gap-2">
+        @if(request('status'))
+            <input type="hidden" name="status" value="{{ request('status') }}">
+        @endif
 
         <div class="relative">
             <input
@@ -98,6 +101,46 @@
 
     </form>
 </div>
+
+{{-- ── Status Filter Buttons ── --}}
+<div class="flex flex-wrap items-center gap-2 px-5 sm:px-6 py-3 border-b border-gray-100 bg-gray-50/50">
+    @php
+        $currentStatus = request('status');
+        $search        = request('search');
+        $filters = [
+            ''          => 'Semua',
+            'pending'   => 'Pending',
+            'paid'      => 'Paid',
+            'completed' => 'Completed',
+        ];
+        $activeClass   = 'bg-primary text-white border-primary';
+        $inactiveClass = 'bg-white text-gray-600 border-gray-200 hover:border-primary hover:text-primary';
+        $dotColors = [
+            'pending'   => 'bg-yellow-400',
+            'paid'      => 'bg-blue-400',
+            'completed' => 'bg-green-400',
+        ];
+    @endphp
+
+    @foreach($filters as $value => $label)
+        @php
+            $isActive = ($currentStatus === $value);
+            $href = route('admin.booking.index', array_filter([
+                'status' => $value ?: null,
+                'search' => $search ?: null,
+            ]));
+        @endphp
+        <a href="{{ $href }}"
+           class="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full border transition-all duration-150
+                  {{ $isActive ? $activeClass : $inactiveClass }}">
+            @if($value && isset($dotColors[$value]))
+                <span class="w-1.5 h-1.5 rounded-full {{ $dotColors[$value] }} inline-block"></span>
+            @endif
+            {{ $label }}
+        </a>
+    @endforeach
+</div>
+
 
     <div class="overflow-x-auto">
         <table class="w-full text-sm">

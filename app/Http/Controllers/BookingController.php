@@ -3,18 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Accommodation;
 use App\Models\AccommodationService;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function create()
+    public function create(Request $request)
     {
-        $services = AccommodationService::with('accommodation')
-            ->orderBy('accommodation_id')
-            ->get();
+        $accommodationId = $request->query('accommodation_id');
 
-        return view('booking.create', compact('services'));
+        $accommodation = null;
+        $services = collect();
+
+        if ($accommodationId) {
+            $accommodation = Accommodation::findOrFail($accommodationId);
+
+            $services = $accommodation->services()->orderBy('name')->get();
+        }
+
+        return view('booking.create', compact('services', 'accommodation', 'accommodationId'));
     }
 
     public function store(Request $request)

@@ -21,6 +21,10 @@ class BookingController extends Controller
         });
     }
 
+    if ($request->status && in_array($request->status, ['pending', 'paid', 'completed'])) {
+        $query->where('status', $request->status);
+    }
+
     $bookings = $query->latest()->paginate(10)->withQueryString();
 
     return view('admin.booking.index', compact('bookings'));

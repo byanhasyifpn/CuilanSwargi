@@ -217,8 +217,8 @@
 <div class="max-w-5xl mx-auto">
 
     {{-- Back link --}}
-    <a href="{{ route('home') }}"
-       class="inline-flex items-center gap-1.5 text-sm text-primary hover:opacity-70 transition mb-8 font-medium">
+    <a href="{{ route('accommodation.detail', $accommodation->id) }}"
+        class="inline-flex items-center gap-1.5 text-sm text-primary hover:opacity-70 transition mb-8 font-medium">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
         </svg>
@@ -311,6 +311,15 @@
                             Fill in the data below → get an order code → confirm with admin
                         </p>
 
+                        @if($accommodation)
+                        <div class="inline-flex items-center gap-2 mt-3 bg-white/15 border border-white/25 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                            {{ $accommodation->name }}
+                        </div>
+                        @endif
+
                         {{-- Progress steps --}}
                         <div class="steps mt-5">
                             <div class="step-item">
@@ -353,6 +362,7 @@
 
                     <form action="{{ route('booking.store') }}" method="POST">
                         @csrf
+                        <input type="hidden" name="accommodation_id" value="{{ $accommodationId ?? old('accommodation_id') }}">
 
                         {{-- Row: Nama + Telepon --}}
                         <div class="grid sm:grid-cols-2 gap-4 mb-1">
@@ -433,10 +443,8 @@
                                     @foreach($services as $service)
                                     <option value="{{ $service->id }}"
                                     {{ old('service_id') == $service->id ? 'selected' : '' }}>
-
-                                    {{ $service->accommodation->name ?? '' }} — {{ $service->name }}
+                                    {{ $service->name }}
                                     (IDR {{ number_format($service->price, 0, ',', '.') }})
-
                                     </option>
                                     @endforeach
 
