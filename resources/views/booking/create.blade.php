@@ -207,9 +207,175 @@
         display: flex; align-items: center; justify-content: center;
     }
 
+    /* ============================================
+       RESPONSIVE IMPROVEMENTS — MOBILE FIRST
+       ============================================ */
+
+    /* Mobile: reset sticky on side-info */
     @media (max-width: 1023px) {
-        .booking-card-header { padding: 2rem 1.5rem 1.5rem; }
-        .booking-card-body   { padding: 1.75rem 1.5rem; }
+        .side-info {
+            position: static;
+            border-radius: 20px;
+            padding: 1.5rem 1.25rem;
+        }
+    }
+
+    /* Mobile: tighten page padding */
+    @media (max-width: 640px) {
+        .booking-page {
+            padding: 1.5rem 0.75rem 4rem;
+        }
+    }
+
+    /* Mobile: card header padding */
+    @media (max-width: 640px) {
+        .booking-card-header {
+            padding: 1.5rem 1.25rem 1.25rem;
+        }
+        .booking-card-header h1 {
+            font-size: 1.6rem !important;
+        }
+    }
+
+    /* Mobile: card body padding */
+    @media (max-width: 640px) {
+        .booking-card-body {
+            padding: 1.25rem !important;
+        }
+    }
+
+    /* Mobile: steps — hide labels on very small screens, keep dots */
+    @media (max-width: 400px) {
+        .step-label {
+            display: none;
+        }
+        .step-line {
+            min-width: 12px;
+            margin: 0 0.25rem;
+        }
+    }
+
+    /* Mobile: step labels shorter */
+    @media (max-width: 480px) {
+        .step-label { font-size: 0.65rem; }
+        .step-line  { min-width: 10px; margin: 0 0.3rem; }
+    }
+
+    /* Mobile: service + date grid → full width columns */
+    @media (max-width: 640px) {
+        .grid-service-dates {
+            grid-template-columns: 1fr !important;
+            gap: 0 !important;
+        }
+    }
+
+    /* Tablet: service + dates — 1 col service + 2 col dates */
+    @media (min-width: 641px) and (max-width: 900px) {
+        .grid-service-dates {
+            grid-template-columns: 1fr 1fr !important;
+        }
+        .grid-service-dates .service-col {
+            grid-column: 1 / -1;
+        }
+    }
+
+    /* Mobile: name + phone grid → stack */
+    @media (max-width: 480px) {
+        .grid-name-phone {
+            grid-template-columns: 1fr !important;
+        }
+    }
+
+    /* Mobile: form input font size (prevent iOS zoom on focus) */
+    @media (max-width: 640px) {
+        .form-input {
+            font-size: 1rem;
+        }
+        select.form-input {
+            font-size: 1rem;
+        }
+    }
+
+    /* Mobile: form-input height for select & date on small screens */
+    @media (max-width: 640px) {
+        .form-input.h-14 {
+            height: 3.25rem;
+        }
+    }
+
+    /* Mobile: side-info — hide features, show compact version */
+    @media (max-width: 640px) {
+        .side-info {
+            padding: 1.25rem 1rem;
+        }
+        .side-feature {
+            padding: 0.75rem 0;
+            gap: 0.65rem;
+        }
+        .side-feature-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+        .side-feature p:first-child {
+            font-size: 0.85rem !important;
+        }
+        .side-feature p:last-child {
+            font-size: 0.72rem !important;
+        }
+    }
+
+    /* Mobile: back link spacing */
+    @media (max-width: 640px) {
+        .back-link {
+            margin-bottom: 1.25rem !important;
+        }
+    }
+
+    /* Mobile: notice strip text */
+    @media (max-width: 640px) {
+        .notice-strip {
+            padding: 0.85rem 1rem;
+            border-radius: 12px;
+        }
+        .notice-strip p {
+            font-size: 0.75rem;
+        }
+    }
+
+    /* Mobile: submit button font size */
+    @media (max-width: 640px) {
+        .btn-submit {
+            font-size: 0.9rem;
+            padding: 0.9rem 1.25rem;
+        }
+    }
+
+    /* Tablet range: card header/body tweak */
+    @media (min-width: 641px) and (max-width: 1023px) {
+        .booking-card-header { padding: 2rem 1.75rem 1.75rem; }
+        .booking-card-body   { padding: 1.75rem !important; }
+    }
+
+    /* Ensure textarea doesn't overflow on mobile */
+    textarea.form-input {
+        min-height: 80px;
+        resize: vertical;
+    }
+
+    /* Fix: date input full width on mobile (some browsers shrink it) */
+    input[type="date"].form-input {
+        min-width: 0;
+        width: 100%;
+    }
+
+    /* Prevent long accommodation name badge overflow */
+    .accommodation-badge {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 </style>
 
@@ -218,7 +384,7 @@
 
     {{-- Back link --}}
     <a href="{{ route('accommodation.detail', $accommodation->id) }}"
-        class="inline-flex items-center gap-1.5 text-sm text-primary hover:opacity-70 transition mb-8 font-medium">
+        class="back-link inline-flex items-center gap-1.5 text-sm text-primary hover:opacity-70 transition mb-8 font-medium">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
         </svg>
@@ -312,8 +478,8 @@
                         </p>
 
                         @if($accommodation)
-                        <div class="inline-flex items-center gap-2 mt-3 bg-white/15 border border-white/25 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="accommodation-badge inline-flex items-center gap-2 mt-3 bg-white/15 border border-white/25 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+                            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                             </svg>
                             {{ $accommodation->name }}
@@ -365,7 +531,7 @@
                         <input type="hidden" name="accommodation_id" value="{{ $accommodationId ?? old('accommodation_id') }}">
 
                         {{-- Row: Nama + Telepon --}}
-                        <div class="grid sm:grid-cols-2 gap-4 mb-1">
+                        <div class="grid sm:grid-cols-2 gap-4 mb-1 grid-name-phone">
                             <div class="form-group">
                                 <label class="form-label" for="name">
                                     <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -423,10 +589,11 @@
                         </div>
 
                         {{-- Row: Service + Check-in + Check-out --}}
-                        <div class="grid md:grid-cols-3 gap-5 mb-1">
+                        {{-- Desktop: 3 cols | Tablet: service full + 2 date cols | Mobile: all stacked --}}
+                        <div class="grid md:grid-cols-3 gap-5 mb-1 grid-service-dates">
 
                             {{-- SERVICE --}}
-                            <div class="form-group">
+                            <div class="form-group service-col">
                                 <label class="form-label" for="service_id">
                                     <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -605,5 +772,20 @@ function updatePrice(){
 service.addEventListener("change", updatePrice);
 checkIn.addEventListener("input", updatePrice);
 checkOut.addEventListener("input", updatePrice);
+
+/* Auto-set checkout min date when check-in changes */
+checkIn.addEventListener('change', function () {
+    if (this.value) {
+        const nextDay = new Date(this.value);
+        nextDay.setDate(nextDay.getDate() + 1);
+        const yyyy = nextDay.getFullYear();
+        const mm   = String(nextDay.getMonth() + 1).padStart(2, '0');
+        const dd   = String(nextDay.getDate()).padStart(2, '0');
+        checkOut.min = `${yyyy}-${mm}-${dd}`;
+        if (checkOut.value && checkOut.value <= this.value) {
+            checkOut.value = '';
+        }
+    }
+});
 
 </script>

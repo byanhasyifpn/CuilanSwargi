@@ -27,16 +27,24 @@ class AccommodationController extends Controller
 
     public function store(Request $request)
     {
-    $request->validate([
+        $request->validate([
         'name' => 'required|string|max:255',
         'capacity' => 'required|integer|min:1',
         'images.*' => 'required|image|mimes:jpeg,png,jpg|max:2048',
 
         'services' => 'required|array|min:1',
+        'services.*' => 'required|array',
+
         'services.*.name' => 'required|string|max:255',
         'services.*.price' => 'required|string',
         'services.*.facilities' => 'required|string',
     ]);
+
+    if (empty($request->services)) {
+        return back()->withErrors([
+            'services' => 'Minimal 1 service harus diisi'
+        ])->withInput();
+    }
 
     DB::transaction(function () use ($request) {
 
@@ -56,7 +64,11 @@ class AccommodationController extends Controller
             }
         }
 
-        foreach ($request->services as $service) {
+        $services = collect($request->services)->filter(function ($service) {
+            return !empty($service['name']) || !empty($service['price']) || !empty($service['facilities']);
+        });
+
+        foreach ($services as $service) {
             $price = preg_replace('/\D/', '', $service['price']);
 
             AccommodationService::create([

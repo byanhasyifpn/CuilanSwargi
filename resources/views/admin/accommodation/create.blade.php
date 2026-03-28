@@ -70,6 +70,9 @@
 
             <h3 class="text-base sm:text-lg font-semibold mb-4">Tipe Service</h3>
 
+            @error('services')
+                <p class="text-red-500 text-sm mb-3">{{ $message }}</p>
+            @enderror
             <div id="services-wrapper"></div>
 
             <button type="button"
@@ -231,6 +234,21 @@ function removeService(button) {
         serviceItem.remove();
     }
 }
+
+@if(old('services'))
+    let oldServices = @json(old('services'));
+
+    oldServices.forEach(service => {
+        addService();
+
+        let items = document.querySelectorAll('.service-item');
+        let current = items[items.length - 1];
+
+        current.querySelector('input[name*="[name]"]').value = service.name ?? '';
+        current.querySelector('input[name*="[price]"]').value = service.price ?? '';
+        current.querySelector('textarea[name*="[facilities]"]').value = service.facilities ?? '';
+    });
+@endif
 
 </script>
 @endsection

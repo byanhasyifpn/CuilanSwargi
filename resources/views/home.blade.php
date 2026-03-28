@@ -170,10 +170,12 @@
     Ganti dengan pendekatan overflow-hidden pada wrapper + padding konsisten.
 --}}
 <section id="penginapan" 
-         class="py-6 sm:py-8 md:py-10 w-full px-4 sm:px-6 md:px-8 lg:px-20">
+class="py-6 sm:py-8 md:py-10 w-full">
+
+    <div class="max-w-[1300px] mx-auto px-6">
 
     <!-- Header — padding konsisten kiri-kanan -->
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 sm:mb-8 px-4 sm:px-6 md:px-8">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 sm:mb-8">
         <div>
             <h2 class="font-crimson text-2xl sm:text-3xl md:text-4xl font-semibold text-primary mb-2">
                 A place to stay, a place to breathe.
@@ -253,7 +255,7 @@
             </div>
         </div>
     </div>
-
+    </div>
 </section>
 
 
