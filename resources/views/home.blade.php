@@ -72,7 +72,7 @@
   <!-- ========================= -->
   <!-- DESKTOP VERSION -->
   <!-- ========================= -->
-  <div class="hidden md:block mt-8 px-6 py-6 max-w-[1300px] mx-auto">
+  <div class="hidden md:block mt-8 px-6 py-6 w-full">
     <div class="relative min-h-[750px] rounded-3xl overflow-hidden shadow-2xl">
 
         <!-- Background -->
@@ -172,7 +172,7 @@
 <section id="penginapan" 
 class="py-6 sm:py-8 md:py-10 w-full">
 
-    <div class="max-w-[1300px] mx-auto px-6">
+    <div class="w-full px-6 lg:px-16 xl:px-24">
 
     <!-- Header — padding konsisten kiri-kanan -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 sm:mb-8">
@@ -262,7 +262,7 @@ class="py-6 sm:py-8 md:py-10 w-full">
 <!-- Moments Section -->
 {{-- FIX: Gunakan w-full box-border alih-alih biarkan browser masing-masing kalkulasi --}}
 <section class="bg-[#2E514B] py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 w-full box-border">
-    <div class="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center">
+    <div class="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center">
         
         <div>
             <img src="{{ asset('images/moments.png') }}" 
@@ -298,7 +298,7 @@ class="py-6 sm:py-8 md:py-10 w-full">
 <!-- Impact Section -->
 <section class="bg-white py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 w-full box-border">
 
-    <div class="max-w-[1200px] mx-auto">
+    <div class="w-full max-w-[1400px] mx-auto px-2">
 
         <div class="flex flex-col lg:flex-row justify-between gap-6 sm:gap-8 mb-8 sm:mb-10 md:mb-12">
             
@@ -396,7 +396,7 @@ class="py-6 sm:py-8 md:py-10 w-full">
         <div class="absolute inset-0 bg-black/50"></div>
     </div>
 
-    <div class="relative z-10 w-full max-w-6xl mx-auto">
+    <div class="relative z-10 w-full max-w-[1400px] mx-auto">
 
         <div class="mb-8 sm:mb-10 md:mb-12">
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-light">
@@ -470,7 +470,7 @@ class="py-6 sm:py-8 md:py-10 w-full">
 
 <!-- Map -->
 <section class="py-10 sm:py-12 md:py-14 lg:py-16 bg-white w-full box-border">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="w-full max-w-[1400px] mx-auto px-6 lg:px-16">
 
         <div class="text-center mb-7 sm:mb-8 md:mb-10">
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-primary mb-2 sm:mb-3">
@@ -507,7 +507,7 @@ class="py-6 sm:py-8 md:py-10 w-full">
 
 <!-- Ratings Section -->
 <section class="py-10 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 bg-white w-full box-border">
-    <div class="max-w-[1200px] mx-auto">
+    <div class="w-full max-w-[1400px] mx-auto px-2">
 
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-7 sm:mb-8 md:mb-10">
             <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-primary leading-snug">
