@@ -172,7 +172,7 @@
 <section id="penginapan" 
 class="py-6 sm:py-8 md:py-10 w-full">
 
-    <div class="w-full px-6 lg:px-16 xl:px-24">
+    <div class="w-full px-4 sm:px-6 lg:px-10 xl:px-16 2xl:px-24">
 
     <!-- Header — padding konsisten kiri-kanan -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 sm:mb-8">
