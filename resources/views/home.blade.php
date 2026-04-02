@@ -73,7 +73,7 @@
   <!-- DESKTOP VERSION -->
   <!-- ========================= -->
   <div class="hidden md:block mt-8 px-6 py-6 w-full">
-    <div class="relative min-h-[750px] rounded-3xl overflow-hidden shadow-2xl">
+    <div class="relative min-h-[850px] rounded-3xl overflow-hidden shadow-2xl">
 
         <!-- Background -->
         <img
