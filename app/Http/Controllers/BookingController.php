@@ -6,6 +6,8 @@ use App\Models\Booking;
 use App\Models\Accommodation;
 use App\Models\AccommodationService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\BookingCustomer;
 
 class BookingController extends Controller
 {
@@ -60,7 +62,7 @@ class BookingController extends Controller
 
         $checkInFormatted = \Carbon\Carbon::parse($request->check_in)->translatedFormat('d F Y');
 
-        Booking::create([
+        $booking = Booking::create([
             'order_code'   => $orderCode,
             'name'         => $request->name,
             'phone'        => $request->phone,
@@ -72,6 +74,8 @@ class BookingController extends Controller
             'notes'        => $request->notes,
             'status'       => 'pending',
         ]);
+
+        Mail::to($booking->email)->send(new BookingCustomer($booking));
 
         return redirect()->route('booking.success', ['orderCode' => $orderCode]);
     }
