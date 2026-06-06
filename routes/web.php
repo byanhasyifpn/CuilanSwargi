@@ -53,8 +53,10 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
 
     // Booking Management
     Route::get('booking', [AdminBookingController::class, 'index'])->name('booking.index');
+    Route::delete('booking/bulk', [AdminBookingController::class, 'bulkDestroy'])->name('booking.bulkDestroy');
     Route::get('booking/{booking}', [AdminBookingController::class, 'show'])->name('booking.show');
     Route::patch('booking/{booking}/status', [AdminBookingController::class, 'updateStatus'])->name('booking.updateStatus');
+    Route::delete('booking/{booking}', [AdminBookingController::class, 'destroy'])->name('booking.destroy');
 
     // Article Management
     Route::resource('article', AdminArticleController::class);

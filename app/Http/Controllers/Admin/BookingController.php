@@ -50,4 +50,28 @@ class BookingController extends Controller
 
         return back()->with('success', 'Status booking berhasil diperbarui!');
     }
+
+    public function destroy(Booking $booking)
+    {
+        $orderCode = $booking->order_code;
+        $booking->delete();
+
+        return redirect()
+            ->route('admin.booking.index')
+            ->with('success', "Booking {$orderCode} berhasil dihapus!");
+    }
+
+    public function bulkDestroy(Request $request)
+    {
+        $request->validate([
+            'bookings'   => 'required|array|min:1',
+            'bookings.*' => 'integer|exists:bookings,id',
+        ]);
+
+        $count = Booking::whereIn('id', $request->bookings)->delete();
+
+        return redirect()
+            ->route('admin.booking.index')
+            ->with('success', "{$count} reservasi berhasil dihapus!");
+    }
 }

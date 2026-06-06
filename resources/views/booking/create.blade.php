@@ -449,9 +449,9 @@
                 {{-- Contact hint --}}
                 <div class="mt-6 pt-5 border-t border-white/10 text-center">
                     <p class="text-white/40 text-xs">Admin WhatsApp</p>
-                    <a href="https://wa.me/6282322785270" target="_blank"
+                    <a href="https://wa.me/6285797104868" target="_blank"
                        class="text-secondary text-sm font-semibold hover:opacity-80 transition">
-                        +62 823-2278-5270
+                        +62 857-9710-4868
                     </a>
                 </div>
             </div>

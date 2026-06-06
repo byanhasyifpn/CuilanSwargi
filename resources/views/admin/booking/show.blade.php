@@ -310,8 +310,82 @@ $duration = ($booking->check_in && $booking->check_out)
                   px-5 py-2.5 rounded-xl hover:bg-gray-50 transition">
             ← Semua Booking
         </a>
+        <button type="button" onclick="openDeleteModal()"
+                class="inline-flex items-center gap-2 bg-red-500 text-white text-sm font-semibold
+                       px-5 py-2.5 rounded-xl hover:bg-red-600 transition shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+            </svg>
+            Hapus Booking
+        </button>
     </div>
 
 </div>
+
+{{-- Modal konfirmasi hapus --}}
+<div id="delete-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/50" onclick="closeDeleteModal()"></div>
+    <div class="relative bg-white rounded-2xl shadow-xl max-w-md w-full border border-gray-100 overflow-hidden">
+        <div class="px-6 py-5 border-b border-gray-100">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h4 class="text-base font-bold text-gray-900">Konfirmasi Hapus Reservasi</h4>
+                    <p class="text-xs text-gray-500 mt-0.5">Tindakan ini tidak dapat dibatalkan</p>
+                </div>
+            </div>
+        </div>
+        <div class="px-6 py-4">
+            <p class="text-sm text-gray-700 mb-3">Anda yakin ingin menghapus reservasi berikut?</p>
+            <ul class="text-sm text-gray-600 space-y-1.5 bg-gray-50 rounded-xl p-3 border border-gray-100">
+                <li class="flex items-center gap-2">
+                    <span class="font-mono text-xs font-bold text-primary bg-primary/10 px-2 py-0.5 rounded">{{ $booking->order_code }}</span>
+                    <span>{{ $booking->name }}</span>
+                </li>
+            </ul>
+            <p class="text-xs text-red-600 font-medium mt-4">
+                Data reservasi yang dihapus tidak dapat dipulihkan kembali.
+            </p>
+        </div>
+        <div class="px-6 py-4 bg-gray-50 flex flex-col-reverse sm:flex-row sm:justify-end gap-2">
+            <button type="button" onclick="closeDeleteModal()"
+                    class="text-sm font-semibold text-gray-600 border border-gray-200 bg-white
+                           px-5 py-2.5 rounded-xl hover:bg-gray-100 transition">
+                Batal
+            </button>
+            <form action="{{ route('admin.booking.destroy', $booking) }}" method="POST" class="inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit"
+                        class="text-sm font-semibold text-white bg-red-500 px-5 py-2.5 rounded-xl
+                               hover:bg-red-600 transition shadow-sm w-full sm:w-auto">
+                    Ya, Hapus Permanen
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const deleteModal = document.getElementById('delete-modal');
+
+    function openDeleteModal() {
+        deleteModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDeleteModal() {
+        deleteModal.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeDeleteModal();
+    });
+</script>
 
 @endsection

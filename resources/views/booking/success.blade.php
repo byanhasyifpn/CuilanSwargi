@@ -11,7 +11,7 @@
     $checkOutDisplay = $booking->check_out
         ? $booking->check_out->translatedFormat('d F Y')
         : '-';
-    $waMessage = "Halo Admin, saya ingin melakukan booking.\n\n"
+        $waMessage = "Halo Admin, saya ingin melakukan booking.\n\n"
         . "Kode Pesanan : {$booking->order_code}\n"
         . "Nama         : {$booking->name}\n"
         . "No HP        : {$booking->phone}\n"
@@ -20,7 +20,9 @@
         . "Check-in     : {$checkInDisplay}\n"
         . "Check-out    : {$checkOutDisplay}\n"
         . "Catatan      : " . ($booking->notes ?: '-') . "\n\n"
-        . "Mohon konfirmasi untuk pembayaran.";
+        . "Mohon konfirmasi untuk pembayaran.\n\n"
+        . "---\n"
+        . "Silakan kirimkan pesan ini kepada admin apa adanya tanpa perubahan apapun.";
 
     $waUrl = "https://wa.me/6285797104868?text=" . urlencode($waMessage);
 @endphp

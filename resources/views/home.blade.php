@@ -265,7 +265,7 @@ class="py-6 sm:py-8 md:py-10 w-full">
     <div class="w-full max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14 items-center">
         
         <div>
-            <img src="{{ asset('images/moments.png') }}" 
+            <img src="{{ asset('images/moment.jpeg') }}" 
                  alt="Moments at Cuilan Swargi" 
                  class="w-full h-[300px] sm:h-[360px] md:h-[420px] lg:h-[480px] object-cover rounded-xl sm:rounded-2xl">
         </div>
